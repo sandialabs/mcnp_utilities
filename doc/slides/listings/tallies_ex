@@ -1,0 +1,6 @@
+% tallies.py ACRR.out
+File: ACRR.out
+  Tally #: 100014 | Neutron Dose Rate [rem/(MW-hr)]
+    Cell #: 1000
+      Material #: 1
+        energy total : 7.0(1)e+03

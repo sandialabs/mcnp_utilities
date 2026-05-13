@@ -1,0 +1,14 @@
+g1 - Godiva critical
+c
+c CELL CARDS
+10   100  -18.74  -1  imp:n=1
+20   0             1  imp:n=0
+
+c SURFACE CARDS
+1    so    {X}    $8.729
+
+c DATA CARDS
+kcode 17500  1.0  50  200
+ksrc  0.0  0.0  0.0
+m100  92235 -.9473
+      92238 -.0527

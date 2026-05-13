@@ -1,0 +1,7 @@
+% iso.py H:2,O:1 -m 1 atom -s
+M1    1001  6.665900E-01 $ Hydrogen-1
+      1002  7.666667E-05 $ Hydrogen-2
+      8016  3.325233E-01 $ Oxygen-16
+      8017  1.266667E-04 $ Oxygen-17
+      8018  6.833333E-04 $ Oxygen-18
+Mixture molar mass (per atom): 6.0051 g/mol

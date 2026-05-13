@@ -1,0 +1,3 @@
+% plot_meshtal.py 104 flux-1D.pdf runtpe.h5 -v y=0,z=49 \
+> -ol "n Flux $\mathrm{\left[\frac{n}{cm^2 \cdot MJ}\right]}$" \
+> --grid

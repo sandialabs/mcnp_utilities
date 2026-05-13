@@ -1,0 +1,13 @@
+__pycache__
+.vscode
+*.out
+*.aux
+*.log
+*.gz
+*.toc
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+doc/slides/mcnp-utilities.pdf
+.DS_Store

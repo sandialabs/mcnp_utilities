@@ -1,0 +1,2 @@
+# {@x = [to_str_and_reverse(v) for v in [1.22423, 63223.21, 945]]}
+x = {x}

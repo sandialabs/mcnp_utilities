@@ -1,0 +1,10 @@
+% iso.py "(H:2,O:1):-80,((U-235:-5,U{235}:-95):1,O:2):-20" -s -m 2 weight
+M2    1001  -8.950458E-02 $ Hydrogen-1
+      1002  -2.057261E-05 $ Hydrogen-2
+      8016  -7.321995E-01 $ Oxygen-16
+      8017  -2.964248E-04 $ Oxygen-17
+      8018  -1.693208E-03 $ Oxygen-18
+     92234  -8.955647E-06 $ Uranium-234
+     92235  -8.814283E-03 $ Uranium-235
+     92238  -1.674624E-01 $ Uranium-238
+Mixture molar mass (per atom): 7.38284 g/mol

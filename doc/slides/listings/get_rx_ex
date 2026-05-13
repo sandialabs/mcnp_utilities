@@ -1,0 +1,5 @@
+% get_rx.py ACRR.out
+ACRR.out:
+keff       : 1.00006(1)
+beff       : 0.00726(1)
+rho        : 0.008(1)$

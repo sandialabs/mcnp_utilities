@@ -1,0 +1,16 @@
+name: mcnp-utilities
+channels:
+  - defaults
+  - conda-forge
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - h5py
+  - matplotlib
+  - numpy
+  - pandas
+  - polars
+  - pyevtk
+  - pypdf
+  - pyyaml
+  - uncertainties

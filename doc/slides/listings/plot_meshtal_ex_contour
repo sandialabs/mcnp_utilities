@@ -1,0 +1,2 @@
+% plot_meshtal.py 104 flux-c.pdf runtpe.h5 -v z=49 \
+> -thr 1e13:k,2e13:y,2.5e13:orange,3e13:r
