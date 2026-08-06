@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from math import isclose
+from os.path import isfile
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 # Local modules
 from mcnp_utilities.lib.materials import Material, mix_materials, get_compendium_material
@@ -42,6 +43,20 @@ def process_input(inp_str, lvl):
       comps[0] = comps[0].split(':')[0].lstrip('(').rstrip(')')
     return lookup_material(comps[0].split('=')[0], comps[0].split('=')[1]) if '=' in comps[0] else Material('atom', nuclides={comps[0] : 1})
 
+def process_file(fname):
+  mat_list, frac_list = [], []
+  with open(fname, 'r') as f:
+    for line in f:
+      sline = line.split()
+      if sline:
+        if sline[0].rsplit('$')[0].lower().startswith('m'):
+          n, zaid, frac = sline[0].lower().strip('m'), sline[1].split('.')[0], float(sline[2])
+        else:
+          zaid, frac = sline[0].split('.')[0], float(sline[1])
+        mat_list.append(Material('atom' if frac > 0 else 'weight', nuclides={zaid : 1}))
+        frac_list.append(frac)
+  return mix_materials(mat_list, frac_list, 'atom' if all([f > 0 for f in frac_list]) else 'weight', num=n)
+
 def parse_arguments():
   parser = ArgumentParser(description=r'''
 
@@ -57,7 +72,7 @@ def parse_arguments():
   parser.add_argument(
     'zaid_pairs',
     type=str,
-    help='Parentheses-nested material specifications, with atom or weight fractions specified after the material. Each material consists of a comma-delimited list of ZAID/fraction pairs, with each pair formatted as "<isotope>:<fraction>". "isotope" can be any one of ZAID (ZZAAA), element symbol (Sy[-AAA]), or element name (Name[-AAA]). If AAA is omitted from an entry, or is equal to 0, the entry is considered to be composed of the naturally-occuring isotopes for that element. Atom fractions are positive and weight fractions are negative. All fraction types must match for a given mixture (but do not have to be the same for all mixtures). A comma-delimited list (inside curly braces) of isotopes to exclude when splitting by natural abundance can be included after the isotope name to facilitate the creation of a material enriched with a certain isotope. E.g. U-235:-0.2,U{235}:-0.8. Tip: You may need to enclose this argument in quotes if it contains curly braces.',
+    help='Material specification or file name containing MCNP-formatted material card. For command-line argument parentheses-nested material specifications, atom or weight fractions are specified after the material. Each material consists of a comma-delimited list of ZAID/fraction pairs, with each pair formatted as "<isotope>:<fraction>". "isotope" can be any one of ZAID (ZZAAA), element symbol (Sy[-AAA]), or element name (Name[-AAA]). If AAA is omitted from an entry, or is equal to 0, the entry is considered to be composed of the naturally-occuring isotopes for that element. Atom fractions are positive and weight fractions are negative. All fraction types must match for a given mixture (but do not have to be the same for all mixtures). A comma-delimited list (inside curly braces) of isotopes to exclude when splitting by natural abundance can be included after the isotope name to facilitate the creation of a material enriched with a certain isotope. E.g. U-235:-0.2,U{235}:-0.8. Tip: You may need to enclose this argument in quotes if it contains curly braces.',
     metavar='<ZAID-1[{exZAID-1+...}]:fraction-1>[,<ZAID-2:fraction-2>...]'
   )
   split_combine.add_argument(
@@ -110,7 +125,10 @@ def parse_arguments():
 if __name__ == '__main__':
   args = parse_arguments()
   mat_level = 0
-  mat = process_input(args.zaid_pairs, mat_level)
+  if isfile(args.zaid_pairs):
+    mat = process_file(args.zaid_pairs)
+  else:
+    mat = process_input(args.zaid_pairs, mat_level)
 
   if args.split_elements:
     mat.split_elements(split_carbon=not args.elemental_carbon)
