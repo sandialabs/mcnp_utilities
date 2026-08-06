@@ -49,12 +49,13 @@ def process_file(fname):
     for line in f:
       sline = line.split()
       if sline:
-        if sline[0].rsplit('$')[0].lower().startswith('m'):
-          n, zaid, frac = sline[0].lower().strip('m'), sline[1].split('.')[0], float(sline[2])
-        else:
-          zaid, frac = sline[0].split('.')[0], float(sline[1])
-        mat_list.append(Material('atom' if frac > 0 else 'weight', nuclides={zaid : 1}))
-        frac_list.append(frac)
+        if sline[0].lower() != 'c':
+          if sline[0].rsplit('$')[0].lower().startswith('m'):
+            n, zaid, frac = sline[0].lower().strip('m'), sline[1].split('.')[0], float(sline[2])
+          else:
+            zaid, frac = sline[0].split('.')[0], float(sline[1])
+          mat_list.append(Material('atom' if frac > 0 else 'weight', nuclides={zaid : 1}))
+          frac_list.append(frac)
   return mix_materials(mat_list, frac_list, 'atom' if all([f > 0 for f in frac_list]) else 'weight', num=n)
 
 def parse_arguments():
