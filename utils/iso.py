@@ -50,7 +50,7 @@ def process_file(fname):
       sline = line.split()
       if sline:
         if sline[0].lower() != 'c':
-          if sline[0].rsplit('$')[0].lower().startswith('m'):
+          if sline[0].lower().startswith('m'):
             n, zaid, frac = sline[0].lower().strip('m'), sline[1].split('.')[0], float(sline[2])
           else:
             zaid, frac = sline[0].split('.')[0], float(sline[1])
