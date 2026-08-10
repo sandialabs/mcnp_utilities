@@ -90,7 +90,7 @@ def parse_arguments():
     '-m', dest='print_mat_card',
     nargs=2,
     help='Print formatted material card for MCNP rather than a summary table. Provide material number and fraction type ("atom" or "weight") as whitespace-delimited entries.',
-    metavar='<material #> <atom|weight>'
+    metavar=('<material #>', '<atom|weight>')
   )
   parser.add_argument(
     '-f', dest='mat_file',
