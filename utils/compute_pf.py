@@ -233,7 +233,7 @@ def read_rod_data(inp_file, fuel_dictionary, tally_number):
               v = ufloat(v, v*e)
               if v > 0.:
                 rod_dictionary[fuel_dictionary[k]].append(RodTally(v, x, y))
-        if in_tally and "cell union total" in line:
+        if in_tally and ("cell union total" in line or "there are no" in line):
           break
   return rod_dictionary
 
