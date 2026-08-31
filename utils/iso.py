@@ -50,7 +50,7 @@ def process_file(fname):
       sline = line.split()
       if sline:
         if sline[0].lower() != 'c':
-          if sline[0].rsplit('$')[0].lower().startswith('m'):
+          if sline[0].lower().startswith('m'):
             n, zaid, frac = sline[0].lower().strip('m'), sline[1].split('.')[0], float(sline[2])
           else:
             zaid, frac = sline[0].split('.')[0], float(sline[1])
@@ -74,7 +74,7 @@ def parse_arguments():
     'zaid_pairs',
     type=str,
     help='Material specification or file name containing MCNP-formatted material card. For command-line argument parentheses-nested material specifications, atom or weight fractions are specified after the material. Each material consists of a comma-delimited list of ZAID/fraction pairs, with each pair formatted as "<isotope>:<fraction>". "isotope" can be any one of ZAID (ZZAAA), element symbol (Sy[-AAA]), or element name (Name[-AAA]). If AAA is omitted from an entry, or is equal to 0, the entry is considered to be composed of the naturally-occuring isotopes for that element. Atom fractions are positive and weight fractions are negative. All fraction types must match for a given mixture (but do not have to be the same for all mixtures). A comma-delimited list (inside curly braces) of isotopes to exclude when splitting by natural abundance can be included after the isotope name to facilitate the creation of a material enriched with a certain isotope. E.g. U-235:-0.2,U{235}:-0.8. Tip: You may need to enclose this argument in quotes if it contains curly braces.',
-    metavar='<ZAID-1[{exZAID-1+...}]:fraction-1>[,<ZAID-2:fraction-2>...]'
+    metavar='<ZAID-1[{exZAID-1+...}]:fraction-1>[,<ZAID-2:fraction-2>...]|<file name w/ material definition>'
   )
   split_combine.add_argument(
     '-s', dest='split_elements',
@@ -90,7 +90,7 @@ def parse_arguments():
     '-m', dest='print_mat_card',
     nargs=2,
     help='Print formatted material card for MCNP rather than a summary table. Provide material number and fraction type ("atom" or "weight") as whitespace-delimited entries.',
-    metavar='<material #> <atom|weight>'
+    metavar=('<material #>', '<atom|weight>')
   )
   parser.add_argument(
     '-f', dest='mat_file',
