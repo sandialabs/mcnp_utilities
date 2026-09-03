@@ -2,10 +2,21 @@
 
 from math import isclose
 from os.path import isfile
-from argparse import ArgumentParser, RawDescriptionHelpFormatter
+from argparse import ArgumentParser, RawDescriptionHelpFormatter, ArgumentTypeError
 # Local modules
 from mcnp_utilities.lib.materials import Material, mix_materials, get_compendium_material
 
+
+def nonnegative_int(value):
+  try:
+    ivalue = int(value)
+  except ValueError:
+    raise ArgumentTypeError(f'{value!r} is not an integer')
+
+  if ivalue < 0:
+    raise ArgumentTypeError('Value must be non-negative')
+
+  return ivalue
 
 def lookup_material(lib, identifier):
   if identifier.isnumeric():
@@ -93,6 +104,13 @@ def parse_arguments():
     metavar=('<material #>', '<atom|weight>')
   )
   parser.add_argument(
+    '-md', dest='mat_decimals',
+    type=nonnegative_int,
+    default=6,
+    help='Number of decimal places to use when printing MCNP material card fractions.',
+    metavar='<N>'
+  )
+  parser.add_argument(
     '-f', dest='mat_file',
     nargs=3,
     help='Destination file to which to write formatted material card, material number, and fraction type as whitespace-delimited entries.',
@@ -145,11 +163,11 @@ if __name__ == '__main__':
   if args.print_mat_card or args.mat_file:
     if args.print_mat_card:
       mat.number, mat_type = args.print_mat_card
-      print(mat.to_MCNP_material_card(mat_type))
+      print(mat.to_MCNP_material_card(mat_type, frac_fmt=f'.{args.mat_decimals}E'))
     if args.mat_file:
       fpath, mat.number, mat_type = args.mat_file
       with open(fpath, 'w') as f:
-        f.write(mat.to_MCNP_material_card(mat_type))
+        f.write(mat.to_MCNP_material_card(mat_type, frac_fmt=f'.{args.mat_decimals}E'))
   else:
     mat.print_table()
 

@@ -267,7 +267,7 @@ class Material:
     for n in self.nuclides:
       self.nuclide_weight_fractions[n.zaid] /= weight_frac_sum
 
-  def to_MCNP_material_card(self, frac_type):
+  def to_MCNP_material_card(self, frac_type, frac_fmt='.6E'):
     s = ''
     if self.name is not None:
       s += f'C {self.name}'
@@ -282,9 +282,9 @@ class Material:
     else:
       s += linesep
     if frac_type.lower() == 'atom':
-      s += f'{"M" + f"{self.number}":<5s}' + f'{linesep}     '.join((f'{n.zaid:>5s}  {self.nuclide_atom_fractions[n.zaid]:.6E} $ {n.name}' for n in self.nuclides))
+      s += f'{"M" + f"{self.number}":<5s}' + f'{linesep}     '.join((f'{n.zaid:>5s}  {self.nuclide_atom_fractions[n.zaid]:{frac_fmt}} $ {n.name}' for n in self.nuclides))
     elif frac_type.lower() == 'weight':
-      s += f'{"M" + f"{self.number}":<5s}' + f'{linesep}     '.join((f'{n.zaid:>5s}  {-1 * self.nuclide_weight_fractions[n.zaid]:.6E} $ {n.name}' for n in self.nuclides))
+      s += f'{"M" + f"{self.number}":<5s}' + f'{linesep}     '.join((f'{n.zaid:>5s}  {-1 * self.nuclide_weight_fractions[n.zaid]:{frac_fmt}} $ {n.name}' for n in self.nuclides))
     return s
 
   def get_molar_mass(self) -> float:
