@@ -177,7 +177,7 @@
     Ni: 0.000003
   mass density: 1.3
 20:
-  name: Asphalt
+  name: Asphalt pavement
   composition:
     H:  0.129089
     C:  0.153985
@@ -200,14 +200,738 @@
 21:
   name: Bakelite
   composition:
-    H : 0.431804
-    C : 0.488651
-    O : 0.079545
+    H: 0.431804
+    C: 0.488651
+    O: 0.079545
   mass density: 1.25
+22:
+  name: Barium Fluoride
+  composition:
+    F:  0.666667
+    Ba: 0.333333
+  mass density: 4.89
+23:
+  name: Barium sulfate
+  composition:
+    O:  0.666667
+    S:  0.166667
+    Ba: 0.166667
+  mass density: 4.5
+24:
+  name: Benzene
+  composition:
+    H: 0.5
+    C: 0.5
+  mass density: 0.8786
+25:
+  name: Beryllium
+  composition:
+    Be: 1.0
+  mass density: 1.848
+26:
+  name: Beryllium Carbide
+  composition:
+    Be: 0.666667
+    C:  0.333333
+  mass density: 1.9
+27:
+  name: Beryllium Oxide
+  composition:
+    Be: 0.5
+    O:  0.5
+  mass density: 3.01
+28:
+  name: Bismuth
+  composition:
+    Bi: 1.0
+  mass density: 9.747
+29:
+  name: Bismuth Germanate (BGO)
+  composition:
+    O:  0.631579
+    Ge: 0.157895
+    Bi: 0.210526
+  mass density: 7.13
+30:
+  name: Bismuth Iodide
+  composition:
+    I:  0.75
+    Bi: 0.25
+  mass density: 5.778
+31:
+  name: Blood (ICRP)
+  composition:
+    H:  0.634596
+    C:  0.052293
+    N:  0.013288
+    O:  0.298052
+    Na: 0.000505
+    Mg: 0.000010
+    Si: 0.000007
+    P:  0.000071
+    S:  0.000362
+    Cl: 0.000492
+    K:  0.000262
+    Ca: 0.000009
+    Fe: 0.000052
+    Zn: 0.000001
+  mass density: 1.06
+32:
+  name: Bone Equivalent Plastic, B-100
+  composition:
+    H:  0.513799
+    C:  0.353638
+    N:  0.012142
+    O:  0.015863
+    F:  0.069704
+    Ca: 0.034854
+  mass density: 1.45
+33:
+  name: Bone Equivalent Plastic, B-110
+  composition:
+    H:  0.386395
+    C:  0.335513
+    N:  0.031096
+    O:  0.031063
+    F:  0.143965
+    Ca: 0.071968
+  mass density: 1.785
+34:
+  name: Bone, Compact (ICRU)
+  composition:
+    H:  0.527877
+    C:  0.192482
+    N:  0.016030
+    O:  0.213112
+    Mg: 0.000684
+    P:  0.018794
+    S:  0.000519
+    Ca: 0.030502
+  mass density: 1.85
+35:
+  name: Bone, Cortical (ICRP)
+  composition:
+    H:  0.475379
+    C:  0.121907
+    N:  0.030412
+    O:  0.282853
+    Mg: 0.000918
+    P:  0.034380
+    S:  0.000997
+    Ca: 0.053138
+    Zn: 0.000016
+  mass density: 1.85
+36:
+  name: Boral (65% Al-35% B4C)
+  composition:
+    B:  0.454449
+    C:  0.113488
+    Al: 0.432063
+  mass density: 2.53
+37:
+  name: Boral (Aluminum 10% boron alloy)
+  composition:
+    B:  0.217839
+    Na: 0.005123
+    Al: 0.767405
+    Si: 0.002097
+    K:  0.006025
+    Ti: 0.000246
+    Fe: 0.001265
+  mass density: 2.6
+38:
+  name: Boral (Aluminum 5% boron alloy)
+  composition:
+    B:  0.116664
+    Na: 0.005487
+    Al: 0.867980
+    Si: 0.001797
+    K:  0.006453
+    Ti: 0.000264
+    Fe: 0.001355
+  mass density: 2.6
+39:
+  name: Borax
+  composition:
+    Na: 0.046512
+    B:  0.093023
+    O:  0.395349
+    H:  0.465116
+  mass density: 1.73
+40:
+  name: Boric Acid
+  composition:
+    H: 0.428571
+    B: 0.142857
+    O: 0.428571
+  mass density: 1.5
+41:
+  name: Boron
+  composition:
+    B: 1.0
+  mass density: 2.37
+42:
+  name: Boron Carbide
+  composition:
+    B: 0.8
+    C: 0.2
+  mass density: 2.52
+43:
+  name: Boron Fluoride (B2F4)
+  composition:
+    B: 0.333333
+    F: 0.666667
+  mass density: 0.004058
+44:
+  name: Boron Fluoride (BF3)
+  composition:
+    B: 0.25
+    F: 0.75
+  mass density: 0.002831
+45:
+  name: Boron Oxide
+  composition:
+    B: 0.4
+    O: 0.6
+  mass density: 1.812
+46:
+  name: Brain (ICRP)
+  composition:
+    H:  0.654704
+    C:  0.062270
+    N:  0.005654
+    O:  0.274958
+    Na: 0.000477
+    Mg: 0.000037
+    P:  0.000682
+    S:  0.000329
+    Cl: 0.000397
+    K:  0.000473
+    Ca: 0.000013
+    Fe: 0.000005
+    Zn: 0.000001
+  mass density: 1.03
+47:
+  name: Brass (typical composition)
+  composition:
+    Fe: 0.000992
+    Cu: 0.668462
+    Zn: 0.318026
+    Sn: 0.001437
+    P:  0.011083
+  mass density: 8.07
+48:
+  name: Brick, Common Silica
+  composition:
+    O:  0.663427
+    Al: 0.003747
+    Si: 0.323229
+    Ca: 0.007063
+    Fe: 0.002534
+  mass density: 1.8
+49:
+  name: Brick, Fire
+  composition:
+    O:  0.636335
+    Mg: 0.005057
+    Al: 0.160954
+    Si: 0.183806
+    Ca: 0.003578
+    Ti: 0.005135
+    Fe: 0.005135
+  mass density: 2.1
+50:
+  name: Brick, Kaolin (white)
+  composition:
+    O:  0.635743
+    Mg: 0.001008
+    Al: 0.181264
+    Si: 0.175774
+    Ca: 0.000362
+    Ti: 0.004323
+    Fe: 0.001526
+  mass density: 2.1
+51:
+  name: Bronze (typical composition)
+  composition:
+    Al: 0.065612
+    Si: 0.007378
+    Mn: 0.004016
+    Fe: 0.011343
+    Ni: 0.007103
+    Cu: 0.853653
+    Zn: 0.034205
+    Sn: 0.012809
+    Pb: 0.003881
+  mass density: 8.4
+52:
+  name: C-552 Air-Equivalent Plastic
+  composition:
+    H:  0.268591
+    C:  0.458140
+    O:  0.003104
+    F:  0.268613
+    Si: 0.001552
+  mass density: 1.76
+53:
+  name: CELOTEX (Lignocellulosic Fiberboard)
+  composition:
+    C: 0.285714
+    H: 0.476190
+    O: 0.238095
+  mass density: 0.25
+54:
+  name: CLLB(Ce) - Cesium Lithium Lanthanum Bromide - 0.3 wt% Cerium doped
+  composition:
+    Cs: 0.199940
+    Li: 0.099970
+    La: 0.099970
+    Br: 0.599819
+    Ce: 0.000301
+  mass density: 4.2
+55:
+  name: Cadmium
+  composition:
+    Cd: 1.0
+  mass density: 8.65
+56:
+  name: Cadmium Nitrate Tetrahydrate
+  composition:
+    H:  0.380952
+    N:  0.095238
+    O:  0.476190
+    Cd: 0.047619
+  mass density: 2.45
+57:
+  name: Cadmium Telluride
+  composition:
+    Cd: 0.5
+    Te: 0.5
+  mass density: 6.2
+58:
+  name: Cadmium Tungstate (CWO)
+  composition:
+    O:  0.666666
+    Cd: 0.166667
+    W:  0.166667
+  mass density: 7.9
+59:
+  name: Cadmium Zinc Telluride (CZT)
+  composition:
+    Cd: 0.333333
+    Zn: 0.333333
+    Te: 0.333333
+  mass density: 5.78
+60:
+  name: Calcium Carbonate
+  composition:
+    C:  0.2
+    O:  0.6
+    Ca: 0.2
+  mass density: 2.8
+61:
+  name: Calcium Fluoride
+  composition:
+    F:  0.666667
+    Ca: 0.333333
+  mass density: 3.18
+62:
+  name: Calcium Oxide
+  composition:
+    O:  0.5
+    Ca: 0.5
+  mass density: 3.3
+63:
+  name: Calcium Sulfate
+  composition:
+    O:  0.666666
+    S:  0.166667
+    Ca: 0.166667
+  mass density: 2.96
+64:
+  name: Calcium Tungstate
+  composition:
+    Ca: 0.166667
+    W:  0.166667
+    O:  0.666666
+  mass density: 7.9
+65:
+  name: Carbon Dioxide
+  composition:
+    C: 0.333333
+    O: 0.666667
+  mass density: 0.001842
+66:
+  name: Carbon Tetrachloride
+  composition:
+    C:  0.2
+    Cl: 0.8
+  mass density: 1.594
+67:
+  name: Carbon, Activated
+  composition:
+    B: 0.000001
+    C: 0.999999
+  mass density: 0.45
+68:
+  name: Carbon, Amorphous
+  composition:
+    B: 0.000001
+    C: 0.999999
+  mass density: 2.0
+69:
+  name: Carbon, Graphite (reactor grade)
+  composition:
+    B: 0.000001
+    C: 0.999999
+  mass density: 1.7
+70:
+  name: Cat litter (clumping)
+  composition:
+    H:  0.437432
+    O:  0.437322
+    Na: 0.003988
+    Al: 0.039762
+    Si: 0.079508
+    Ca: 0.001988
+  mass density: 1.1
+71:
+  name: Cat litter (non-clumping)
+  composition:
+    H:  0.213278
+    O:  0.528384
+    Na: 0.029470
+    Mg: 0.032513
+    Al: 0.030251
+    Si: 0.163456
+    K:  0.001510
+    Ca: 0.000524
+    Fe: 0.000614
+  mass density: 0.8
+72:
+  name: Cellulose
+  composition:
+    H: 0.476190
+    C: 0.285714
+    O: 0.238095
+  mass density: 1.5
+73:
+  name: Cellulose Acetate
+  composition:
+    H: 0.476179
+    C: 0.285724
+    O: 0.238097
+  mass density: 1.42
+74:
+  name: Ceric Sulfate Dosimeter Solution
+  composition:
+    H:  0.659080
+    N:  0.000353
+    O:  0.337663
+    S:  0.002816
+    Ce: 0.000088
+  mass density: 1.03
+75:
+  name: Cerium Bromide
+  composition:
+    Ce: 0.25
+    Br: 0.75
+  mass density: 5.2
+76:
+  name: Cerium Fluoride
+  composition:
+    F:  0.75
+    Ce: 0.25
+  mass density: 6.16
+77:
+  name: Cesium Iodide - 1 wt% Sodium doped
+  composition:
+    Cs: 0.497513
+    I:  0.497512
+    Na: 0.004975
+  mass density: 4.51
+78:
+  name: Cesium Iodide - 1 wt% Thalium doped
+  composition:
+    Cs: 0.497512
+    I:  0.497513
+    Tl: 0.004975
+  mass density: 4.51
+79:
+  name: Cesium Lithium Yttrium Chloride (CLYC)
+  composition:
+    Cs: 0.2
+    Li: 0.1
+    Y:  0.1
+    Cl: 0.6
+  mass density: 3.31
+80:
+  name: Cesium Lithium Yttrium Chloride (CLYC) with 95% Li6 Enrichment
+  composition:
+    Cs:   0.2
+    Li-6: 0.095682
+    Li-7: 0.004318
+    Y:    0.1
+    Cl:   0.6
+  mass density: 3.31
+81:
+  name: Chromium
+  composition:
+    Cr: 1.0
+  mass density: 7.18
+82:
+  name: Clay
+  composition:
+    O:  0.633298
+    Na: 0.006923
+    Mg: 0.009202
+    Al: 0.094688
+    Si: 0.219137
+    P:  0.000076
+    K:  0.010930
+    Ca: 0.009895
+    Ti: 0.002040
+    Mn: 0.000024
+    Fe: 0.013787
+  mass density: 2.2
+83:
+  name: Coal, Anthracite
+  composition:
+    H: 0.228604
+    C: 0.749029
+    N: 0.006169
+    O: 0.014402
+    S: 0.001796
+  mass density: 0.84
+84:
+  name: Coal, Bituminous
+  composition:
+    H: 0.421415
+    C: 0.533658
+    N: 0.008665
+    O: 0.033187
+    S: 0.003075
+  mass density: 0.75
+85:
+  name: Coal, Lignite
+  composition:
+    H: 0.357496
+    C: 0.519327
+    N: 0.007350
+    O: 0.114221
+    S: 0.001605
+  mass density: 0.75
+86:
+  name: Concrete [Los Alamos (MCNP) Mix]
+  composition:
+    H:  0.084736
+    O:  0.604078
+    Si: 0.241925
+    Al: 0.024842
+    Na: 0.012523
+    Ca: 0.027244
+    Fe: 0.004652
+  mass density: 2.25
+87:
+  name: Concrete, Barite (Type BA)
+  composition:
+    H:  0.109599
+    O:  0.600196
+    Mg: 0.001515
+    Al: 0.004777
+    Si: 0.011474
+    S:  0.103647
+    Ca: 0.038594
+    Fe: 0.026213
+    Ba: 0.103985
+  mass density: 3.35
+88:
+  name: Concrete, Barytes-Limonite
+  composition:
+    H:  0.235412
+    O:  0.548167
+    Na: 0.000911
+    Mg: 0.002201
+    Al: 0.004311
+    Si: 0.011183
+    S:  0.054990
+    Ca: 0.031170
+    Mn: 0.000593
+    Fe: 0.056904
+    Ba: 0.054158
+  mass density: 3.36
+89:
+  name: Concrete, Boron Frits-baryte
+  composition:
+    H:  0.147509
+    B:  0.025537
+    O:  0.560956
+    F:  0.003215
+    Na: 0.013975
+    Mg: 0.002513
+    Al: 0.006298
+    Si: 0.031294
+    S:  0.075765
+    K:  0.000679
+    Ca: 0.041475
+    Mn: 0.000097
+    Fe: 0.010413
+    Zn: 0.002680
+    Ba: 0.077594
+  mass density: 3.1
+90:
+  name: Concrete, Colemanite-baryte
+  composition:
+    H:  0.208721
+    B:  0.022432
+    O:  0.539767
+    Na: 0.001184
+    Mg: 0.002241
+    Al: 0.005596
+    Si: 0.015511
+    S:  0.074331
+    Ca: 0.052248
+    Mn: 0.000045
+    Fe: 0.004565
+    Ba: 0.073358
+  mass density: 3.2
+91:
+  name: Concrete, Ferro-phosphorus
+  composition:
+    H:  0.158638
+    O:  0.207882
+    Mg: 0.002632
+    Al: 0.004741
+    Si: 0.038716
+    P:  0.203404
+    Ca: 0.033514
+    Fe: 0.350473
+  mass density: 4.8
+92:
+  name: Concrete, Hanford Dry
+  composition:
+    H:  0.078437
+    O:  0.595591
+    Na: 0.001864
+    Mg: 0.011462
+    Al: 0.050830
+    Si: 0.195334
+    K:  0.006577
+    Ca: 0.039567
+    Fe: 0.020338
+  mass density: 2.18
+93:
+  name: Concrete, Hanford Wet
+  composition:
+    H:  0.205169
+    O:  0.539084
+    Na: 0.001462
+    Mg: 0.008992
+    Al: 0.039880
+    Si: 0.153253
+    K:  0.005160
+    Ca: 0.031043
+    Fe: 0.015956
+  mass density: 2.35
+94:
+  name: Concrete, Iron-Portland
+  composition:
+    H:  0.135596
+    O:  0.150642
+    Mg: 0.002215
+    Al: 0.005066
+    Si: 0.013419
+    S:  0.000646
+    Ca: 0.040918
+    Mn: 0.002638
+    Fe: 0.648860
+  mass density: 5.9
+95:
+  name: Concrete, Iron-limonite
+  composition:
+    H:  0.018201
+    O:  0.412586
+    Mg: 0.003018
+    Al: 0.006797
+    Si: 0.018281
+    S:  0.001144
+    Ca: 0.055818
+    Mn: 0.010681
+    Fe: 0.473474
+  mass density: 4.4
+96:
+  name: Concrete, Limonite and steel
+  composition:
+    H:  0.209628
+    O:  0.301635
+    Mg: 0.001964
+    Al: 0.007326
+    Si: 0.016261
+    K:  0.000698
+    Ca: 0.044390
+    V:  0.000535
+    Fe: 0.417563
+  mass density: 4.54
+97:
+  name: Concrete, Luminite-Portland-colemanite-baryte
+  composition:
+    H:  0.248273
+    B:  0.021458
+    O:  0.525816
+    Na: 0.001089
+    Mg: 0.001872
+    Al: 0.011130
+    Si: 0.012069
+    S:  0.063635
+    Ca: 0.043537
+    Ti: 0.000337
+    Mn: 0.000166
+    Fe: 0.007618
+    Ba: 0.063000
+  mass density: 3.1
+98:
+  name: Concrete, Luminite-colemanite-baryte
+  composition:
+    H:  0.247673
+    B:  0.018639
+    O:  0.528948
+    Na: 0.001096
+    Mg: 0.001319
+    Al: 0.014940
+    Si: 0.007829
+    S:  0.064710
+    Ca: 0.031317
+    Ti: 0.006077
+    Mn: 0.000500
+    Fe: 0.012591
+    Ba: 0.064361
+  mass density: 3.1
+99:
+  name: Concrete, M-1
+  composition:
+    H:  0.244682
+    B:  0.025659
+    O:  0.206177
+    Mg: 0.054541
+    Cl: 0.018262
+    Mn: 0.001683
+    Ca: 0.008462
+    Fe: 0.440534
+  mass density: 4.5
+100:
+  name: Concrete, MO
+  composition:
+    H:  0.187553
+    O:  0.141792
+    Mg: 0.057557
+    Mn: 0.002753
+    Cl: 0.013865
+    Fe: 0.596480
+  mass density: 5.5
 372:
   name: Uranium Dioxide
   composition:
-    O: 0.666667
+    O:     0.666667
     U-234: 0.000090
     U-235: 0.010124
     U-236: 0.000046
