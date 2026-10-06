@@ -5,7 +5,7 @@ from os.path import sep, join as pjoin, exists, isdir
 from os import mkdir, walk, listdir
 from collections import defaultdict
 from math import sqrt
-import matplotlib.pyplot as plt
+from matplotlib.pyplot import rcParams
 
 
 def create_nested_path(path: str) -> None:
@@ -28,7 +28,7 @@ def set_plot_params():
     "font.family" : "serif",
     "font.serif" : ["Computer Modern Serif"]
   }
-  plt.rcParams.update(params)
+  rcParams.update(params)
 
 def proper_path_split(path: str) -> list[str]:
   return [x for x in path.split(sep) if x]

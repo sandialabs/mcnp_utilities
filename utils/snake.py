@@ -19,8 +19,9 @@ from os.path import realpath, dirname, split as psplit, join as pjoin
 from datetime import datetime
 from random import random, randint
 from keyword import kwlist
+from re import compile
 # Local modules
-from mcnp_utilities.lib.materials import material_fns
+from mcnp_utilities.lib.materials import get_compendium_material_card
 from mcnp_utilities.lib.basic_tools import create_nested_path
 
 
@@ -55,7 +56,14 @@ allowable_fns = {
   'sinh'     : sinh,   'cosh'     : cosh,     'tanh'     : tanh,
   'random'   : random, 'randint'  : randint
 }
-allowable_fns.update(**material_fns)
+material_fns = {
+  'get_compendium_material_card' : get_compendium_material_card
+}
+allowable_fns.update(material_fns)
+
+_ASSIGNMENT_LHS_RE = compile(
+  r'^@?[A-Za-z_]\w*(?:\s*,\s*[A-Za-z_]\w*)*$'
+)
 
 def get_arguments():
   parser = ArgumentParser(description=r"""
@@ -211,6 +219,52 @@ def evaluate(vname, string, vars, not_evaluated, new_allowable_fns):
   except:
     not_evaluated[vname] = string
 
+def find_top_level_assignment(expression):
+  '''
+  Return the index of a top-level assignment operator, or -1 if the
+  expression is not an assignment.
+
+  This ignores '=' inside function calls, lists, tuples, dicts, strings,
+  and comparison operators like ==, <=, >=, !=.
+  '''
+  depth = 0
+  quote = None
+  escaped = False
+
+  for i, char in enumerate(expression):
+    if quote:
+      if escaped:
+        escaped = False
+      elif char == '\\':
+        escaped = True
+      elif char == quote:
+        quote = None
+      continue
+
+    if char in ('"', "'"):
+      quote = char
+      continue
+
+    if char in '([{':
+      depth += 1
+      continue
+
+    if char in ')]}':
+      depth -= 1
+      continue
+
+    if char == '=' and depth == 0:
+      prev_char = expression[i - 1] if i > 0 else ''
+      next_char = expression[i + 1] if i + 1 < len(expression) else ''
+
+      # Skip comparison-style operators.
+      if prev_char in ('=', '!', '<', '>') or next_char == '=':
+        continue
+
+      return i
+
+  return -1
+
 def process_line(text, permutations, not_evaluated, new_constants, new_allowable_fns):
   '''
   Process a line if it contains (an) expression(s).
@@ -219,17 +273,63 @@ def process_line(text, permutations, not_evaluated, new_constants, new_allowable
     if char == '{':
       start_idx = i + 1
       end_idx = text[start_idx:].index('}')
-      expression = text[start_idx:start_idx+end_idx]
-      if '=' in expression:
-        name, expr = (s.strip() for s in expression.split('='))
-        if name.startswith('@'):
-          permutations[name[1:]] = evaluate(name[1:], expr, new_constants, not_evaluated, new_allowable_fns)
-        else:
-          if ',' in name:
-            for i, n in enumerate(name.split(',')):
-              new_constants[n.strip()] = evaluate(n.strip(), f'{expr}[{i}]', new_constants, not_evaluated, new_allowable_fns)
+      expression = text[start_idx:start_idx + end_idx]
+
+      assignment_idx = find_top_level_assignment(expression)
+
+      # Not an assignment; leave it alone so replace_line() can evaluate it later.
+      if assignment_idx == -1:
+        continue
+
+      name = expression[:assignment_idx].strip()
+      expr = expression[assignment_idx + 1:].strip()
+
+      # If the left side is not a valid Snake assignment target, skip it.
+      # This prevents things like my_func(a=1) from being parsed as:
+      # name = "my_func(a"
+      # expr = "1)"
+      if not _ASSIGNMENT_LHS_RE.match(name):
+        continue
+
+      if name.startswith('@'):
+        permutations[name[1:]] = evaluate(
+          name[1:],
+          expr,
+          new_constants,
+          not_evaluated,
+          new_allowable_fns
+        )
+      else:
+        if ',' in name:
+          names = [n.strip() for n in name.split(',')]
+          values = evaluate(
+            ', '.join(names),
+            expr,
+            new_constants,
+            not_evaluated,
+            new_allowable_fns
+          )
+
+          if values is not None:
+            if len(values) != len(names):
+              raise ValueError(
+                f'Cannot unpack {len(values)} values into {len(names)} variables: {name} = {expr}'
+              )
+
+            for n, value in zip(names, values):
+              new_constants[n] = value
           else:
-            new_constants[name] = evaluate(name, expr, new_constants, not_evaluated, new_allowable_fns)
+            for i, n in enumerate(names):
+              new_constants[n] = None
+              not_evaluated[n] = f'({expr})[{i}]'
+        else:
+          new_constants[name] = evaluate(
+            name,
+            expr,
+            new_constants,
+            not_evaluated,
+            new_allowable_fns
+          )
 
 def replace_line(text, vars, not_evaluated, new_allowable_fns):
   '''
@@ -237,17 +337,28 @@ def replace_line(text, vars, not_evaluated, new_allowable_fns):
   '''
   while '{' in text:
     start_idx = text.index('{')
-    end_idx = text[start_idx:].index('}')+1
-    v = text[start_idx:(start_idx+end_idx)]
-    evaluated_variable = evaluate(v, f"f'{v}'", vars, not_evaluated, new_allowable_fns)
+    end_idx = text[start_idx:].index('}') + 1
+    v = text[start_idx:(start_idx + end_idx)]
+
+    evaluated_variable = evaluate(
+      v,
+      f'f{v!r}',
+      vars,
+      not_evaluated,
+      new_allowable_fns
+    )
+
     if evaluated_variable is not None:
-      text = text.replace(v, evaluated_variable)
+      text = text.replace(v, evaluated_variable, 1)
     else:
       var_name = v.strip('{}').split(':')[0]
       if var_name in kwlist:
-        raise ValueError(f'Variable "{var_name}" is a Python keyword and cannot be used as a variable name!')
+        raise ValueError(
+          f'Variable "{var_name}" is a Python keyword and cannot be used as a variable name!'
+        )
       else:
         raise TypeError(f'Variable "{var_name}" is undefined!')
+
   return text
 
 def write_keys(args, fobj, ps, n):

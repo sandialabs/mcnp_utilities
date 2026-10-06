@@ -338,23 +338,6 @@ def mix_materials(mats, fractions, frac_type, num=1):
   new_mat.normalize()
   return new_mat
 
-def water(num):
-  m = Material('atom', number=num, nuclides={'1000' : 2/3, '8000' : 1/3})
-  m.split_elements()
-  return m
-
-def uo2(num):
-  m = Material('atom', number=num, nuclides={'8000' : 2/3, '92234' : 0.00009, '92235' : 0.010124, '92236' : 0.000046, '92238' : 0.323072})
-  m.split_elements()
-  return m
-
-def graphite_rg(num):
-  m = Material('atom', number=num, nuclides={'5000' : 0.000001, '6000' : 0.999999})
-  m.split_elements()
-  return m
-
-material_fns = {'water' : water, 'uo2' : uo2, 'graphite_rg' : graphite_rg}
-
 def get_compendium_material(library, index: int=None, name: str=None) -> Material:
   """
   Obtain material reference from PNNL's Compendium of Material Composition Data for Radiation Transport Modeling (rev. 2) [PNNL-15870]
@@ -376,3 +359,16 @@ def get_compendium_material(library, index: int=None, name: str=None) -> Materia
   if this_mat is None:
     raise ValueError('Could not find referenced material!')
   return Material('atom', nuclides=this_mat['composition'], density=-this_mat['mass density'], name=this_mat['name'])
+
+def get_compendium_material_card(library: str, mat_no: int, index: int=None, name: str=None, frac_type: str='atom', fmt_str: str='.6E') -> str:
+  """
+  Obtain material card reference by index from PNNL's Compendium of Material Composition Data for Radiation Transport Modeling (rev. 2) [PNNL-15870]
+  """
+  if index is not None:
+    mat = get_compendium_material(library, index=index)
+  elif name is not None:
+    mat = get_compendium_material(library, name=name)
+  else:
+    raise ValueError('Must provide either index or name keyword arguments!')
+  mat.number = mat_no
+  return mat.to_MCNP_material_card(frac_type, frac_fmt=fmt_str)

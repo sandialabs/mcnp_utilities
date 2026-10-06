@@ -135,5 +135,23 @@ class TestSnake(unittest.TestCase):
 
     self.checkAnswers({'test-5_0' : '10 20 30'})
 
+  def test_basic_6(self):
+    """
+    Docstring for test_basic_6
+
+    Tests that keyword arguments in external library functions are handled correctly.
+    """
+    args = InputArgs(
+      pjoin(input_dir, 'test-6.snake'),
+      lib=pjoin(input_dir, 'test-6-lib.py')
+    )
+    snake(args, quiet=True)
+
+    self.checkAnswers({
+      'test-6_0' : '(1, 14, 6)',
+      'test-6_1' : '(2, 14, 6)',
+      'test-6_2' : '(3, 14, 6)',
+    })
+
 if __name__ == '__main__':
   unittest.main()
