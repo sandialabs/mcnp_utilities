@@ -928,12 +928,2618 @@
     Cl: 0.013865
     Fe: 0.596480
   mass density: 5.5
+101:
+  name: Concrete, Magnetite
+  composition:
+    H:  0.082377
+    O:  0.551000
+    Mg: 0.010248
+    Al: 0.023218
+    Si: 0.024456
+    S:  0.001177
+    Ca: 0.047269
+    Ti: 0.030274
+    V:  0.001630
+    Cr: 0.000871
+    Mn: 0.000962
+    Fe: 0.226518
+  mass density: 3.53
+102:
+  name: Concrete, Magnetite and steel
+  composition:
+    H:  0.086074
+    O:  0.314486
+    Mg: 0.005517
+    Al: 0.014030
+    Si: 0.020499
+    Ca: 0.050769
+    Ti: 0.012192
+    V:  0.000464
+    Fe: 0.495969
+  mass density: 4.64
+103:
+  name: Concrete, Magnuson's
+  composition:
+    H:  0.059731
+    C:  0.159072
+    O:  0.566259
+    Na: 0.001113
+    Mg: 0.070306
+    Al: 0.005284
+    Si: 0.027193
+    S:  0.001405
+    Cl: 0.000203
+    K:  0.004382
+    Ca: 0.102437
+    Ti: 0.000564
+    Mn: 0.000169
+    Fe: 0.001817
+  mass density: 2.147
+104:
+  name: Concrete, Oak Ridge (ORNL)
+  composition:
+    H:  0.106687
+    C:  0.253543
+    O:  0.445629
+    Na: 0.000205
+    Mg: 0.023349
+    Al: 0.006977
+    Si: 0.021339
+    K:  0.000506
+    Ca: 0.139343
+    Fe: 0.002423
+  mass density: 2.2994
+105:
+  name: Concrete, Ordinary (NBS 03)
+  composition:
+    H:  0.149857
+    C:  0.074206
+    O:  0.526836
+    Na: 0.000773
+    Mg: 0.017713
+    Al: 0.023794
+    Si: 0.091975
+    S:  0.001649
+    K:  0.000773
+    Ca: 0.109681
+    Fe: 0.003516
+  mass density: 2.35
+106:
+  name: Concrete, Ordinary (NBS 04)
+  composition:
+    H:  0.103572
+    O:  0.583387
+    Na: 0.013974
+    Mg: 0.001982
+    Al: 0.031850
+    Si: 0.210759
+    S:  0.000752
+    K:  0.009244
+    Ca: 0.038876
+    Fe: 0.004171
+  mass density: 2.35
+107:
+  name: Concrete, Ordinary (NIST)
+  composition:
+    H:  0.305322
+    C:  0.002880
+    O:  0.500410
+    Na: 0.009212
+    Mg: 0.000725
+    Al: 0.010298
+    Si: 0.151046
+    K:  0.003578
+    Ca: 0.014924
+    Fe: 0.001605
+  mass density: 2.3
+108:
+  name: Concrete, Portland
+  composition:
+    H:  0.168734
+    C:  0.001416
+    O:  0.561159
+    Na: 0.011838
+    Mg: 0.001400
+    Al: 0.021354
+    Si: 0.204119
+    K:  0.005656
+    Ca: 0.018674
+    Fe: 0.004264
+  mass density: 2.3
+109:
+  name: Concrete, Regulatory Concrete (developed for U.S. NRC)
+  composition:
+    H:  0.168032
+    O:  0.563184
+    Na: 0.021365
+    Al: 0.021343
+    Si: 0.203235
+    Ca: 0.018595
+    Fe: 0.004246
+  mass density: 2.3
+110:
+  name: Concrete, Rocky Flats
+  composition:
+    H:  0.133297
+    C:  0.082335
+    N:  0.000256
+    O:  0.542949
+    Na: 0.004909
+    Mg: 0.009213
+    Al: 0.014408
+    Si: 0.098871
+    S:  0.001061
+    K:  0.006277
+    Ca: 0.102809
+    Ti: 0.000374
+    Fe: 0.003240
+  mass density: 2.321
+111:
+  name: Concrete, Serpentine
+  composition:
+    H:  0.246195
+    C:  0.001181
+    O:  0.498976
+    Na: 0.002776
+    Mg: 0.086638
+    Al: 0.011036
+    Si: 0.116124
+    K:  0.001632
+    Ca: 0.026536
+    Cr: 0.000273
+    Fe: 0.008633
+  mass density: 2.1
+112:
+  name: Copper
+  composition:
+    Cu: 1.0
+  mass density: 8.96
+113:
+  name: Diatomaceous Earth
+  composition:
+    H:  0.151307
+    O:  0.581762
+    Na: 0.007330
+    Mg: 0.001944
+    Al: 0.009834
+    Si: 0.239362
+    K:  0.004823
+    Ca: 0.001676
+    Fe: 0.001962
+  mass density: 0.2563
+114:
+  name: Diesel Fuel
+  composition:
+    H:  0.657143
+    C:  0.342857
+  mass density: 0.849
+115:
+  name: Earth, Typical Western U.S.
+  composition:
+    H:  0.316843
+    O:  0.501587
+    Al: 0.039952
+    Si: 0.141618
+  mass density: 1.52
+116:
+  name: Earth, U.S. Average
+  composition:
+    O:  0.670604
+    Na: 0.005578
+    Mg: 0.011432
+    Al: 0.053073
+    Si: 0.201665
+    K:  0.007653
+    Ca: 0.026664
+    Ti: 0.002009
+    Mn: 0.000272
+    Fe: 0.021050
+  mass density: 1.52
+117:
+  name: Ethane
+  composition:
+    H:  0.75
+    C:  0.25
+  mass density: 0.001253
+118:
+  name: Ethyl Acetate
+  composition:
+    H:  0.571429
+    C:  0.285714
+    O:  0.142857
+  mass density: 0.901
+119:
+  name: Ethyl Alcohol
+  composition:
+    H:  0.666667
+    C:  0.222222
+    O:  0.111111
+  mass density: 0.7893
+120:
+  name: Ethylene
+  composition:
+    H:  0.666667
+    C:  0.333333
+  mass density: 0.001174
+121:
+  name: Ethylene Glycol
+  composition:
+    H:  0.6
+    C:  0.2
+    O:  0.2
+  mass density: 1.114
+122:
+  name: Explosive compound, AN
+  composition:
+    N:  0.166667
+    H:  0.333333
+    O:  0.5
+  mass density: 1.72
+123:
+  name: Explosive compound, EGDN
+  composition:
+    H:  0.222222
+    C:  0.111111
+    N:  0.222222
+    O:  0.444444
+  mass density: 1.49
+124:
+  name: Explosive compound, HMX
+  composition:
+    H:  0.333333
+    C:  0.166667
+    N:  0.333333
+    O:  0.166667
+  mass density: 1.91
+125:
+  name: Explosive compound, NC
+  composition:
+    H:  0.100000
+    C:  0.416667
+    N:  0.250000
+    O:  0.233333
+  mass density: 1.68
+126:
+  name: Explosive compound, NG
+  composition:
+    H:  0.250000
+    C:  0.150000
+    N:  0.150000
+    O:  0.450000
+  mass density: 1.60
+127:
+  name: Explosive compound, PETN
+  composition:
+    H:  0.275862
+    C:  0.172414
+    N:  0.137931
+    O:  0.413793
+  mass density: 1.77
+128:
+  name: Explosive compound, RDX
+  composition:
+    H:  0.285714
+    C:  0.142857
+    N:  0.285714
+    O:  0.285714
+  mass density: 1.82
+129:
+  name: Explosive compound, TNT
+  composition:
+    H:  0.238095
+    C:  0.333333
+    N:  0.142857
+    O:  0.285714
+  mass density: 1.65
+130:
+  name: Fat
+  composition:
+    H:  0.145390
+    C:  0.759210
+    O:  0.095400
+  mass density: 0.92
+131:
+  name: Feathers
+  composition:
+    H:  0.073088
+    C:  0.474882
+    N:  0.151587
+    O:  0.223774
+    S:  0.076669
+  mass density: 0.89
+132:
+  name: Ferrous Sulfate Dosimeter Solution
+  composition:
+    H:  0.660200
+    O:  0.333333
+    S:  0.006467
+  mass density: 1.03
+133:
+  name: FERRITE-Material
+  composition:
+    Fe: 0.5
+    O:  0.5
+  mass density: 5.3
+134:
+  name: Fibrin
+  composition:
+    H:  0.068650
+    C:  0.517410
+    N:  0.149860
+    O:  0.255010
+    S:  0.009070
+  mass density: 1.35
+135:
+  name: Fiberglass
+  composition:
+    H:  0.022124
+    O:  0.665846
+    Na: 0.003137
+    Mg: 0.001053
+    Al: 0.001717
+    Si: 0.307570
+    K:  0.000395
+    Ca: 0.001611
+    Fe: 0.000547
+  mass density: 2.5
+136:
+  name: Film (Kodak Verichrome Pan)
+  composition:
+    H:  0.075262
+    C:  0.505175
+    N:  0.099893
+    O:  0.269911
+    Ag: 0.049759
+  mass density: 1.17
+137:
+  name: Fish Muscle
+  composition:
+    H:  0.105368
+    C:  0.101222
+    N:  0.028261
+    O:  0.759888
+    Na: 0.001079
+    P:  0.002397
+    S:  0.001786
+    Cl: 0.000000
+  mass density: 1.05
+138:
+  name: Fluorine
+  composition:
+    F: 1.0
+  mass density: 0.001696
+139:
+  name: Freon-12
+  composition:
+    C:  0.086957
+    Cl: 0.434783
+    F:  0.478261
+  mass density: 0.0136
+140:
+  name: Freon-12B2
+  composition:
+    C:  0.039216
+    Br: 0.785888
+    F:  0.174896
+  mass density: 0.015
+141:
+  name: Freon-13
+  composition:
+    C:  0.065574
+    Cl: 0.327869
+    F:  0.606557
+  mass density: 0.0039
+142:
+  name: Freon-13B1
+  composition:
+    C:  0.035088
+    Br: 0.701754
+    F:  0.263158
+  mass density: 0.0058
+143:
+  name: Freon-13I1
+  composition:
+    C:  0.026316
+    F:  0.078947
+    I:  0.894737
+  mass density: 0.015
+144:
+  name: Freon-22
+  composition:
+    C:  0.166667
+    H:  0.166667
+    Cl: 0.333333
+    F:  0.333333
+  mass density: 0.00177
+145:
+  name: Freon-23
+  composition:
+    C:  0.142857
+    H:  0.142857
+    F:  0.714286
+  mass density: 0.0019
+146:
+  name: Freon-113
+  composition:
+    C:  0.2
+    Cl: 0.4
+    F:  0.4
+  mass density: 1.56
+147:
+  name: Freon-114
+  composition:
+    C:  0.200000
+    Cl: 0.200000
+    F:  0.600000
+  mass density: 1.55
+148:
+  name: Freon-115
+  composition:
+    C:  0.2
+    Cl: 0.2
+    F:  0.6
+  mass density: 0.00153
+149:
+  name: Freon-116
+  composition:
+    C:  0.166667
+    F:  0.833333
+  mass density: 0.00158
+150:
+  name: Freon-13B1
+  composition:
+    C:  0.035088
+    Br: 0.701754
+    F:  0.263158
+  mass density: 0.0058
+151:
+  name: Germanium, High Purity
+  composition:
+    Ge-70: 0.009079
+    Ge-72: 0.012115
+    Ge-73: 0.003421
+    Ge-74: 0.016110
+    Ge-76: 0.003412
+  mass density: 5.323
+152:
+  name: Glass Scintillator, Li Doped (GS1, GS2, GS3)
+  composition:
+    Li-6: 0.005909
+    Li-7: 0.071949
+    O:    0.581369
+    Mg:   0.115886
+    Al:   0.041992
+    Si:   0.178152
+    Ce:   0.004743
+  mass density: 2.66
+153:
+  name: Glass Scintillator, Li Doped (GS10, GS20, GS30)
+  composition:
+    Li-6: 0.015868
+    Li-7: 0.193196
+    O:    0.545546
+    Mg:   0.017287
+    Al:   0.061502
+    Si:   0.162355
+    Ce:   0.004246
+  mass density: 2.5
+154:
+  name: Glass Scintillator, Li Doped (GSF1, GSF2, and GSF3)
+  composition:
+    Li-6: 0.009403
+    Li-7: 0.114481
+    O:    0.586222
+    Na:   0.014389
+    Al:   0.065600
+    Si:   0.207188
+    Ce:   0.002717
+  mass density: 2.42
+155:
+  name: Glass Scintillator, Li Doped (KG1, KG2, KG3)
+  composition:
+    Li-6: 0.018093
+    Li-7: 0.220283
+    O:    0.545435
+    Si:   0.209674
+    Ce:   0.005187
+  mass density: 2.42
+156:
+  name: Glass, Borosilicate (Pyrex Glass)
+  composition:
+    O:  0.559820
+    B:  0.141773
+    Na: 0.038098
+    Al: 0.020167
+    Si: 0.238529
+    K:  0.001613
+  mass density: 2.23
+157:
+  name: Glass, Foam
+  composition:
+    H:  0.338628
+    C:  0.030058
+    O:  0.565877
+    Mg: 0.001415
+    Al: 0.022322
+    Si: 0.036953
+    S:  0.000170
+    Ca: 0.004577
+  mass density: 0.11
+158:
+  name: Glass, Lead
+  composition:
+    O:  0.356160
+    Na: 0.003995
+    Mg: 0.001036
+    Al: 0.012951
+    Si: 0.162087
+    K:  0.005599
+    Ca: 0.003046
+    Ti: 0.000643
+    Mn: 0.000176
+    Fe: 0.000438
+    Pb: 0.453869
+  mass density: 6.22
+159:
+  name: Glass, Plate
+  composition:
+    O:  0.476190
+    Na: 0.142857
+    Si: 0.380952
+  mass density: 2.5
+160:
+  name: Glycerol
+  composition:
+    H: 0.526316
+    C: 0.315789
+    O: 0.157895
+  mass density: 1.26
+161:
+  name: Glycerin
+  composition:
+    H: 0.526316
+    C: 0.315789
+    O: 0.157895
+  mass density: 1.26
+162:
+  name: Gold
+  composition:
+    Au: 1.0
+  mass density: 19.32
+163:
+  name: Gypsum (Plaster of Paris)
+  composition:
+    H:  0.285714
+    O:  0.571429
+    S:  0.071429
+    Ca: 0.071429
+  mass density: 2.32
+164:
+  name: Drywall
+  composition:
+    H:  0.285714
+    O:  0.571429
+    S:  0.071429
+    Ca: 0.071429
+  mass density: 2.32
+165:
+  name: He-3 proportional gas
+  composition:
+    He-3: 1.0
+  mass density: 0.000134
+166:
+  name: He-4 gas detector
+  composition:
+    He-4: 1.0
+  mass density: 0.000166
+167:
+  name: Helium, Natural
+  composition:
+    He: 1.0
+  mass density: 0.000166
+168:
+  name: Hydrogen
+  composition:
+    H: 1.0
+  mass density: 0.000084
+169:
+  name: Incoloy Alloy 800
+  composition:
+    C:  0.001200
+    Mn: 0.010300
+    Si: 0.010000
+    P:  0.000450
+    S:  0.000150
+    Cr: 0.203000
+    Ni: 0.317500
+    Fe: 0.457400
+  mass density: 7.94
+170:
+  name: Inconel Alloy 600
+  composition:
+    C:  0.000800
+    Mn: 0.006000
+    Si: 0.003500
+    P:  0.000025
+    S:  0.000025
+    Cr: 0.153000
+    Ni: 0.725000
+    Fe: 0.111650
+  mass density: 8.47
+171:
+  name: Inconel Alloy 625
+  composition:
+    C:  0.000150
+    Mn: 0.003000
+    Si: 0.003000
+    P:  0.000015
+    S:  0.000015
+    Cr: 0.215000
+    Mo: 0.090000
+    Ni: 0.625000
+    Fe: 0.063820
+  mass density: 8.44
+172:
+  name: Inconel Alloy 718
+  composition:
+    C:  0.000400
+    Mn: 0.003000
+    Si: 0.003000
+    P:  0.000015
+    S:  0.000015
+    Cr: 0.190000
+    Mo: 0.030000
+    Nb: 0.050000
+    Ni: 0.520000
+    Fe: 0.203570
+  mass density: 8.19
+173:
+  name: Indium
+  composition:
+    In: 1.0
+  mass density: 7.31
+174:
+  name: Iron
+  composition:
+    Fe: 1.0
+  mass density: 7.87
+175:
+  name: Iron Boride (Fe2B)
+  composition:
+    B:  0.333333
+    Fe: 0.666667
+  mass density: 7.28
+176:
+  name: Iron, Cast (gray)
+  composition:
+    C:  0.137105
+    Si: 0.044837
+    P:  0.004691
+    S:  0.001510
+    Mn: 0.005730
+    Fe: 0.806127
+  mass density: 7.15
+177:
+  name: Iron, Wrought (Byers No.1)
+  composition:
+    C:  0.003747
+    Si: 0.003163
+    P:  0.001127
+    S:  0.000175
+    Mn: 0.000154
+    Fe: 0.991634
+  mass density: 7.7
+178:
+  name: Kaowool
+  composition:
+    B:  0.000467
+    O:  0.636100
+    Al: 0.179644
+    Si: 0.176545
+    Ca: 0.000363
+    Ti: 0.004332
+    Fe: 0.002549
+  mass density: 0.096
+179:
+  name: Kapton Polyimide Film
+  composition:
+    H: 0.256392
+    C: 0.564121
+    N: 0.051282
+    O: 0.128205
+  mass density: 1.42
+180:
+  name: Kennertium
+  composition:
+    Ni: 0.191007
+    Cu: 0.294036
+    W:  0.514957
+  mass density: 16.8
+181:
+  name: Kernite
+  composition:
+    H:  0.32
+    B:  0.16
+    O:  0.44
+    Na: 0.08
+  mass density: 1.95
+182:
+  name: Kerosene
+  composition:
+    H: 0.681818
+    C: 0.318182
+  mass density: 0.819
+183:
+  name: Krypton
+  composition:
+    Kr: 1.0
+  mass density: 0.00347832
+184:
+  name: Kynar
+  composition:
+    H: 0.333333
+    C: 0.333333
+    F: 0.333333
+  mass density: 1.79
+185:
+  name: Lanthanum Bromide - 0.5 wt% Cerium doped
+  composition:
+    Br: 0.755995
+    Ce: 0.001249
+    La: 0.242756
+  mass density: 5.08
+186:
+  name: Lanthanum Bromide - 10 wt% Cerium and 0.10 wt% Strontium doped
+  composition:
+    Br: 0.750000
+    Ce: 0.025000
+    La: 0.224750
+    Sr: 0.000250
+  mass density: 5.08
+187:
+  name: Lanthanum Bromide - 10 wt% Cerium doped
+  composition:
+    Br: 0.748693
+    Ce: 0.024741
+    La: 0.226566
+  mass density: 5.08
+188:
+  name: Lanthanum Bromide - 5 wt% Cerium doped
+  composition:
+    Br: 0.748531
+    Ce: 0.012368
+    La: 0.239101
+  mass density: 5.08
+189:
+  name: Lead
+  composition:
+    Pb: 1.0
+  mass density: 11.35
+190:
+  name: Lead Iodide
+  composition:
+    Pb: 0.333333
+    I:  0.666667
+  mass density: 6.16
+191:
+  name: Lead Tungstate (PWO)
+  composition:
+    O:  0.666666
+    W:  0.166667
+    Pb: 0.166667
+  mass density: 8.24
+192:
+  name: Lithium
+  composition:
+    Li: 1.0
+  mass density: 0.534
+193:
+  name: Lithium Amide
+  composition:
+    H:  0.5
+    Li: 0.25
+    N:  0.25
+  mass density: 1.178
+194:
+  name: Lithium Fluoride
+  composition:
+    Li: 0.5
+    F:  0.5
+  mass density: 2.635
+195:
+  name: Lithium Gadolinium Borate (LGB)
+  composition:
+    Li: 0.315789
+    B:  0.157895
+    O:  0.473684
+    Gd: 0.052632
+  mass density: 3.5
+196:
+  name: Lithium Hydride
+  composition:
+    H:  0.5
+    Li: 0.5
+  mass density: 0.82
+197:
+  name: Lithium Iodide (high density)
+  composition:
+    Li: 0.5
+    I:  0.5
+  mass density: 4.08
+198:
+  name: Lithium Iodide (low density)
+  composition:
+    Li: 0.5
+    I:  0.5
+  mass density: 3.494
+199:
+  name: Lithium Oxide
+  composition:
+    Li: 0.666667
+    O:  0.333333
+  mass density: 2.013
+200:
+  name: Lithium Tetraborate
+  composition:
+    Li: 0.153846
+    B:  0.307692
+    O:  0.538462
+  mass density: 2.44
+201:
+  name: Lucite
+  composition:
+    H: 0.533333
+    C: 0.333333
+    O: 0.133333
+  mass density: 1.19
+202:
+  name: Lutetium Aluminum Garnet (LuAG)
+  composition:
+    O:  0.6
+    Al: 0.25
+    Lu: 0.15
+  mass density: 6.73
+203:
+  name: Lutetium Iodide
+  composition:
+    Lu: 0.25
+    I:  0.75
+  mass density: 5.6
+204:
+  name: Lutetium Orthoaluminate (LuAP)
+  composition:
+    O:  0.6
+    Al: 0.2
+    Lu: 0.2
+  mass density: 8.4
+205:
+  name: Lutetium Oxyorthosilicate (LSO)
+  composition:
+    O:  0.625
+    Si: 0.125
+    Lu: 0.25
+  mass density: 7.4
+206:
+  name: "Lutetium Yttrium OxyorthoSilicate: 0.5 atom% Cerium (LYSO)"
+  composition:
+    O:  0.621875
+    Si: 0.124375
+    Y:  0.012438
+    Lu: 0.236313
+    Ce: 0.005
+  mass density: 7.25
+207:
+  name: Magnesium
+  composition:
+    Mg: 1
+  mass density: 1.74
+208:
+  name: Magnesium Oxide
+  composition:
+    O:  0.5
+    Mg: 0.5
+  mass density: 3.58
+209:
+  name: Magnesium Tetraborate
+  composition:
+    B:  0.333333
+    O:  0.583334
+    Mg: 0.083333
+  mass density: 2.53
+210:
+  name: Masonite
+  composition:
+    H: 0.47619
+    C: 0.285714
+    O: 0.238095
+  mass density: 1.3
+211:
+  name: Melamine
+  composition:
+    H: 0.4
+    C: 0.2
+    N: 0.4
+  mass density: 1.573
+212:
+  name: Melamine Formaldehyde
+  composition:
+    H: 0.388889
+    C: 0.277778
+    N: 0.333333
+  mass density: 1.35
+213:
+  name: Mercuric Iodide
+  composition:
+    I:  0.666667
+    Hg: 0.333333
+  mass density: 6.36
+214:
+  name: Mercury
+  composition:
+    Hg: 1
+  mass density: 13.546
+215:
+  name: Methane
+  composition:
+    H: 0.8
+    C: 0.2
+  mass density: 0.000667151
+216:
+  name: Methanol
+  composition:
+    H: 0.666666
+    C: 0.166667
+    O: 0.166667
+  mass density: 0.7914
+217:
+  name: Methylene Chloride
+  composition:
+    H:  0.4
+    C:  0.2
+    Cl: 0.4
+  mass density: 1.3266
+218:
+  name: Molybdenum
+  composition:
+    Mo: 1
+  mass density: 10.22
+219:
+  name: Monosodium Titanate, MST
+  composition:
+    H:  0.111111
+    O:  0.555556
+    Na: 0.111111
+    Ti: 0.222222
+  mass density: 1
+220:
+  name: Mortar
+  composition:
+    Al: 0.176573
+    Ca: 0.001118
+    O:  0.625073
+    Fe: 0.004185
+    K:  0.003991
+    Na: 0.018197
+    Si: 0.167202
+    Ti: 0.003661
+  mass density: 1.97
+221:
+  name: Muscle Equivalent-Liquid, with sucrose
+  composition:
+    H: 0.619257
+    C: 0.082644
+    N: 0.016082
+    O: 0.282017
+  mass density: 1.11
+222:
+  name: Muscle Equivalent-Liquid, without sucrose
+  composition:
+    H: 0.631874
+    C: 0.062437
+    N: 0.015809
+    O: 0.28988
+  mass density: 1.07
+223:
+  name: Muscle, Skeletal
+  composition:
+    H:  0.630924
+    C:  0.056734
+    N:  0.012488
+    O:  0.298113
+    Na: 0.000206
+    Mg: 0.000049
+    P:  0.000367
+    S:  0.000475
+    Cl: 0.000141
+    K:  0.000488
+    Ca: 0.000005
+    Fe: 0.000005
+    Zn: 0.000005
+  mass density: 1.04
+224:
+  name: Muscle, Striated
+  composition:
+    H:  0.633092
+    C:  0.064072
+    N:  0.015634
+    O:  0.285073
+    Na: 0.000218
+    Mg: 0.000051
+    P:  0.000404
+    S:  0.000976
+    K:  0.00048
+  mass density: 1.04
+225:
+  name: NE-213 Equivalent
+  composition:
+    C: 0.444444
+    H: 0.555556
+  mass density: 0.874
+226:
+  name: Neon
+  composition:
+    Ne: 1
+  mass density: 0.000838505
+227:
+  name: Nickel
+  composition:
+    Ni: 1
+  mass density: 8.902
+228:
+  name: Niobium
+  composition:
+    Nb: 1
+  mass density: 8.57
+229:
+  name: Nitrogen
+  composition:
+    N: 1
+  mass density: 0.00116528
+230:
+  name: Nylon, Dupont ELVAmide 8062
+  composition:
+    H: 0.593353
+    C: 0.311942
+    N: 0.041061
+    O: 0.053644
+  mass density: 1.08
+231:
+  name: Nylon, Type 11 (Rilsan)
+  composition:
+    H: 0.617647
+    C: 0.323529
+    N: 0.029412
+    O: 0.029412
+  mass density: 1.425
+232:
+  name: Nylon, Type 6 and Type 6/6
+  composition:
+    H: 0.578947
+    C: 0.315789
+    N: 0.052632
+    O: 0.052632
+  mass density: 1.14
+233:
+  name: Nylon, Type 6/10
+  composition:
+    H: 0.6
+    C: 0.32
+    N: 0.04
+    O: 0.04
+  mass density: 1.14
+234:
+  name: Oil, Crude (Heavy, Cold Lake, Canada)
+  composition:
+    H: 0.588874
+    C: 0.397741
+    N: 0.00163
+    O: 0.003924
+    S: 0.007831
+  mass density: 0.97
+235:
+  name: Oil, Crude (Heavy, Mexican)
+  composition:
+    H: 0.587741
+    C: 0.40476
+    S: 0.007499
+  mass density: 0.975
+236:
+  name: Oil, Crude (Heavy, Qayarah, Iraq)
+  composition:
+    H: 0.590036
+    C: 0.391776
+    N: 0.002914
+    S: 0.015274
+  mass density: 0.97
+237:
+  name: Oil, Crude (Light, Texas)
+  composition:
+    H: 0.629377
+    C: 0.36523
+    N: 0.002578
+    S: 0.002815
+  mass density: 0.875
+238:
+  name: Oil, Fuel (Calif.)
+  composition:
+    H: 0.633771
+    C: 0.364359
+    S: 0.00187
+  mass density: 0.955
+239:
+  name: Oil, Hydraulic
+  composition:
+    H:  0.392857
+    C:  0.47619
+    O:  0.047619
+    P:  0.011905
+    Cl: 0.071429
+  mass density: 0.871
+240:
+  name: Oil, Lard
+  composition:
+    H: 0.620689
+    C: 0.344828
+    O: 0.034483
+  mass density: 0.915
+241:
+  name: Oxygen
+  composition:
+    O: 1
+  mass density: 0.00133151
+242:
+  name: P-10 gas
+  composition:
+    H:  0.285714
+    C:  0.071429
+    Ar: 0.642857
+  mass density: 0.001561
+243:
+  name: P-5 gas
+  composition:
+    H:  0.166667
+    C:  0.041667
+    Ar: 0.791666
+  mass density: 0.001611
+244:
+  name: P-terphenyl
+  composition:
+    H: 0.4375
+    C: 0.5625
+  mass density: 1.28
+245:
+  name: Palladium
+  composition:
+    Pd: 1
+  mass density: 12.02
+246:
+  name: Paper, News print
+  composition:
+    H: 0.47619
+    C: 0.285714
+    O: 0.238095
+  mass density: 0.65
+247:
+  name: Paper, glossy
+  composition:
+    H: 0.47619
+    C: 0.285714
+    O: 0.238095
+  mass density: 1.135
+248:
+  name: Paper, printer
+  composition:
+    H: 0.47619
+    C: 0.285714
+    O: 0.238095
+  mass density: 0.69
+249:
+  name: Photographic Emulsion, Gel in
+  composition:
+    H: 0.546943
+    C: 0.235252
+    N: 0.053934
+    O: 0.161567
+    S: 0.002304
+  mass density: 1.2914
+250:
+  name: Photographic Emulsion, Kodak Type AA
+  composition:
+    H:  0.440284
+    C:  0.25526
+    N:  0.074899
+    O:  0.148422
+    Br: 0.040572
+    Ag: 0.040562
+  mass density: 2.2
+251:
+  name: Photographic Emulsion, Standard Nuclear
+  composition:
+    H:  0.403032
+    C:  0.193154
+    N:  0.117608
+    O:  0.125897
+    Br: 0.080153
+    Ag: 0.080156
+  mass density: 3.815
+252:
+  name: Platinum
+  composition:
+    Pt: 1
+  mass density: 21.45
+253:
+  name: Plutonium Bromide
+  composition:
+    Br: 0.75
+    Pu: 0.25
+  mass density: 6.75
+254:
+  name: Plutonium Carbide
+  composition:
+    C:  0.5
+    Pu: 0.5
+  mass density: 13.6
+255:
+  name: Plutonium Chloride
+  composition:
+    Cl: 0.75
+    Pu: 0.25
+  mass density: 4.89
+256:
+  name: Plutonium Dioxide
+  composition:
+    O:  0.666667
+    Pu: 0.333333
+  mass density: 11.46
+257:
+  name: Plutonium Fluoride (PuF3)
+  composition:
+    F:  0.75
+    Pu: 0.25
+  mass density: 9.32
+258:
+  name: Plutonium Fluoride (PuF4)
+  composition:
+    F:  0.8
+    Pu: 0.2
+  mass density: 7.19
+259:
+  name: Plutonium Fluoride (PuF6)
+  composition:
+    F:  0.857143
+    Pu: 0.142857
+  mass density: 5.14
+260:
+  name: Plutonium Iodide
+  composition:
+    I:  0.75
+    Pu: 0.25
+  mass density: 7.4
+261:
+  name: Plutonium Nitrate
+  composition:
+    N:  0.136364
+    O:  0.545455
+    H:  0.272727
+    Pu: 0.045455
+  mass density: 2.5
+262:
+  name: Plutonium Nitride
+  composition:
+    N: 0.5
+    Pu: 0.5
+  mass density: 14.1
+263:
+  name: Plutonium Oxide (Pu2O3)
+  composition:
+    O:  0.6
+    Pu: 0.4
+  mass density: 10.5
+264:
+  name: Plutonium Oxide (PuO)
+  composition:
+    O:  0.5
+    Pu: 0.5
+  mass density: 14
+265:
+  name: "Plutonium, Aged WGPu (A: 4-7% Pu240)"
+  composition:
+    Pu-238: 0.00003
+    Pu-239: 0.930368
+    Pu-240: 0.056947
+    Pu-241: 0.003578
+    Am-241: 0.009077
+  mass density: 19.84
+266:
+  name: "Plutonium, Aged WGPu (B: 10-13% Pu240)"
+  composition:
+    Pu-238: 0.000064
+    Pu-239: 0.857279
+    Pu-240: 0.118849
+    Pu-241: 0.004028
+    Am-241: 0.01978
+  mass density: 19.84
+267:
+  name: "Plutonium, Aged WGPu (C: 16-19% Pu240)"
+  composition:
+    Pu-238: 0.00009
+    Pu-239: 0.79986
+    Pu-240: 0.17595
+    Pu-241: 0.002934
+    Am-241: 0.021166
+  mass density: 19.84
+268:
+  name: Plutonium, DOE 3013 WGPu
+  composition:
+    Pu-238: 0.000039
+    Pu-239: 0.93006
+    Pu-240: 0.058
+    Pu-241: 0.004401
+    Pu-242: 0.0004
+    Am-241: 0.0071
+  mass density: 19.84
+269:
+  name: Plutonium, Fuel Grade
+  composition:
+    Pu-238: 0.00017
+    Pu-239: 0.74332
+    Pu-240: 0.1894
+    Pu-241: 0.05763
+    Pu-242: 0.00948
+  mass density: 19.84
+270:
+  name: Plutonium, Power Grade
+  composition:
+    Pu-238: 0.00153
+    Pu-239: 0.58086
+    Pu-240: 0.24098
+    Pu-241: 0.11215
+    Pu-242: 0.06447
+  mass density: 19.84
+271:
+  name: Plutonium, Shefelbine WGPu
+  composition:
+    Pu-238: 0.00003
+    Pu-239: 0.93839
+    Pu-240: 0.05559
+    Pu-241: 0.00408
+    Pu-242: 0.00191
+  mass density: 19.84
+272:
+  name: Polycarbonate
+  composition:
+    H: 0.451613
+    C: 0.387097
+    O: 0.16129
+  mass density: 1.2
+273:
+  name: Polyethylene Terephthalate (PET)
+  composition:
+    H: 0.363636
+    C: 0.454545
+    O: 0.181818
+  mass density: 1.37
+274:
+  name: Polyethylene, Borated
+  composition:
+    H: 0.660312
+    B: 0.017328
+    C: 0.32236
+  mass density: 0.95
+275:
+  name: Polyethylene, Non-borated
+  composition:
+    H: 0.666667
+    C: 0.333333
+  mass density: 0.95
+276:
+  name: Polyisocyanurate (PIR)
+  composition:
+    H: 0.344828
+    C: 0.51724
+    N: 0.068966
+    O: 0.068966
+  mass density: 0.0482
+277:
+  name: Polypropylene (PP)
+  composition:
+    H: 0.666667
+    C: 0.333333
+  mass density: 0.9
+278:
+  name: Polystyrene (PS)
+  composition:
+    H: 0.5
+    C: 0.5
+  mass density: 1.06
+279:
+  name: Polytetrafluoroethylene (PTFE)
+  composition:
+    C: 0.333333
+    F: 0.666667
+  mass density: 2.25
+280:
+  name: Polyurethane Foam (PUR)
+  composition:
+    H: 0.360023
+    C: 0.400878
+    N: 0.076459
+    O: 0.162639
+  mass density: 0.021
+281:
+  name: Polyvinyl Acetate (PVA)
+  composition:
+    H: 0.5
+    C: 0.333333
+    O: 0.166667
+  mass density: 1.19
+282:
+  name: Polyvinyl Chloride (PVC)
+  composition:
+    H: 0.5
+    C: 0.333333
+    Cl: 0.166667
+  mass density: 1.406
+283:
+  name: Polyvinyl Toluene (PVT)
+  composition:
+    H: 0.526316
+    C: 0.473684
+  mass density: 1.032
+284:
+  name: Polyvinylidene Chloride (PVDC)
+  composition:
+    H: 0.333333
+    C: 0.333333
+    Cl: 0.333333
+  mass density: 1.7
+285:
+  name: Potassium Aluminum Silicate
+  composition:
+    O: 0.615385
+    Al: 0.076923
+    Si: 0.230769
+    K: 0.076923
+  mass density: 1.1
+286:
+  name: Potassium Iodide
+  composition:
+    K: 0.5
+    I: 0.5
+  mass density: 3.13
+287:
+  name: Potassium Oxide
+  composition:
+    O: 0.333333
+    K: 0.666667
+  mass density: 2.32
+288:
+  name: Propane (gas)
+  composition:
+    H: 0.727273
+    C: 0.272727
+  mass density: 0.00187939
+289:
+  name: Propane (liquid)
+  composition:
+    H: 0.727273
+    C: 0.272727
+  mass density: 0.43
+290:
+  name: Quartz
+  composition:
+    O: 0.666667
+    Si: 0.333333
+  mass density: 2.62
+291:
+  name: Quartz Glass
+  composition:
+    O: 0.666667
+    Si: 0.333333
+  mass density: 2.2
+292:
+  name: "Radiochromic Dye Film, Nylon Base (RDF: NB)"
+  composition:
+    H: 0.589064
+    C: 0.317179
+    N: 0.04111
+    O: 0.052647
+  mass density: 1.08
+293:
+  name: Rayon
+  composition:
+    H: 0.47619
+    C: 0.285714
+    O: 0.238095
+  mass density: 1.16
+294:
+  name: Rock (Average of 5 types)
+  composition:
+    H: 0.027052
+    C: 0.098551
+    O: 0.561516
+    Na: 0.012119
+    Mg: 0.027079
+    Al: 0.043135
+    Si: 0.147747
+    P: 0.000307
+    S: 0.005618
+    K: 0.008671
+    Ca: 0.054072
+    Ti: 0.001514
+    Mn: 0.000165
+    Fe: 0.012454
+  mass density: 2.662
+295:
+  name: Rock, Basalt
+  composition:
+    O: 0.629838
+    Na: 0.024716
+    Mg: 0.003656
+    Al: 0.058713
+    Si: 0.24888
+    P: 0.000351
+    K: 0.018158
+    Ca: 0.006737
+    Ti: 0.00078
+    Mn: 0.000146
+    Fe: 0.008025
+  mass density: 3.01
+296:
+  name: Rock, Granite
+  composition:
+    O: 0.607744
+    Na: 0.020743
+    Mg: 0.037864
+    Al: 0.068362
+    Si: 0.182167
+    P: 0.001047
+    K: 0.005014
+    Ca: 0.03782
+    Ti: 0.005119
+    Mn: 0.000616
+    Fe: 0.033504
+  mass density: 2.69
+297:
+  name: Rock, Limestone
+  composition:
+    C: 0.190012
+    O: 0.603322
+    Si: 0.016659
+    Ca: 0.190007
+  mass density: 2.6
+298:
+  name: Rock, Sandstone
+  composition:
+    C: 0.00148
+    O: 0.654711
+    Na: 0.006472
+    Mg: 0.001355
+    Al: 0.015468
+    Si: 0.30491
+    P: 0.000003
+    K: 0.007027
+    Ca: 0.004532
+    Ti: 0.000085
+    Fe: 0.003956
+    Mn: 0.000001
+  mass density: 2.37
+299:
+  name: Rock, Shale
+  composition:
+    H: 0.029418
+    C: 0.031447
+    O: 0.607866
+    Na: 0.003719
+    Mg: 0.004942
+    Al: 0.053784
+    Si: 0.225978
+    P: 0.000041
+    S: 0.00611
+    K: 0.008792
+    Ca: 0.014705
+    Ti: 0.001096
+    Fe: 0.012089
+    Mn: 0.000013
+  mass density: 2.6
+300:
+  name: Rubber, Butyl
+  composition:
+    H: 0.666667
+    C: 0.333333
+  mass density: 0.92
+301:
+  name: Rubber, Natural
+  composition:
+    H: 0.615385
+    C: 0.384615
+  mass density: 0.92
+302:
+  name: Rubber, Neoprene
+  composition:
+    H: 0.5
+    C: 0.4
+    Cl: 0.1
+  mass density: 1.23
+303:
+  name: Rubber, Silicon
+  composition:
+    H: 0.597028
+    C: 0.199364
+    O: 0.104171
+    Si: 0.099437
+  mass density: 1.0185
+304:
+  name: Salt Water (T=0 C)
+  composition:
+    H: 0.621151
+    O: 0.310588
+    Na: 0.03413
+    Cl: 0.034131
+  mass density: 1.209865
+305:
+  name: Salt Water (T=20 C)
+  composition:
+    H: 0.661897
+    O: 0.330961
+    Na: 0.003571
+    Cl: 0.003571
+  mass density: 1.022394
+306:
+  name: Sand
+  composition:
+    H: 0.135402
+    C: 0.004874
+    O: 0.583891
+    Na: 0.012932
+    Al: 0.022215
+    Si: 0.226487
+    K: 0.005179
+    Ca: 0.004874
+    Fe: 0.004146
+  mass density: 1.7
+307:
+  name: Sea Water, Simple Artificial
+  composition:
+    H: 0.661583
+    O: 0.331501
+    Na: 0.002897
+    Mg: 0.000326
+    S: 0.000174
+    Cl: 0.003392
+    K: 0.000063
+    Ca: 0.000064
+  mass density: 1.023343
+308:
+  name: Sea Water, Standard
+  composition:
+    H: 0.661559
+    B: 0.000003
+    C: 0.000012
+    O: 0.331526
+    F: 0
+    Na: 0.002897
+    Mg: 0.000326
+    S: 0.000174
+    Cl: 0.003371
+    K: 0.000063
+    Ca: 0.000063
+    Br: 0.000005
+  mass density: 1.023343
+309:
+  name: Sepiolite
+  composition:
+    H: 0.297872
+    O: 0.489362
+    Mg: 0.085106
+    Si: 0.12766
+  mass density: 2.14
+310:
+  name: Silciate Yttrium - 0.5 atom% Cerium
+  composition:
+    Y: 0.142173
+    S: 0.214332
+    O: 0.642995
+    Ce: 0.0005
+  mass density: 4.5
+311:
+  name: Silicon
+  composition:
+    Si: 1
+  mass density: 2.33
+312:
+  name: Silicon Carbide (hexagonal)
+  composition:
+    C: 0.5
+    Si: 0.5
+  mass density: 3.21
+313:
+  name: Silicon Dioxide (Alpha-quartz)
+  composition:
+    O: 0.666667
+    Si: 0.333333
+  mass density: 2.648
+314:
+  name: Silicon Dioxide (Silica)
+  composition:
+    O: 0.666667
+    Si: 0.333333
+  mass density: 2.32
+315:
+  name: Silver
+  composition:
+    Ag: 1
+  mass density: 10.5
+316:
+  name: Skin (ICRP)
+  composition:
+    H: 0.619958
+    C: 0.118062
+    N: 0.020589
+    O: 0.240355
+    Na: 0.000019
+    Mg: 0.000015
+    P: 0.000066
+    S: 0.000308
+    Cl: 0.000468
+    K: 0.000135
+    Ca: 0.000023
+    Fe: 0.000001
+    Zn: 0.000001
+  mass density: 1.1
+317:
+  name: Sodium
+  composition:
+    Na: 1
+  mass density: 0.971
+318:
+  name: Sodium Bismuth Tungstate (NBWO)
+  composition:
+    O: 0.666667
+    Na: 0.083333
+    W: 0.166667
+    Bi: 0.083333
+  mass density: 7.57
+319:
+  name: Sodium Chloride
+  composition:
+    Na: 0.5
+    Cl: 0.5
+  mass density: 2.17
+320:
+  name: Sodium Iodide - 0.2 wt% Thalium Doped
+  composition:
+    Na: 0.4995
+    I: 0.499501
+    Tl: 0.000999
+  mass density: 3.667
+321:
+  name: Sodium Iodide with 8 wt% Lithium - 0.10 wt% Thalium doped
+  composition:
+    I: 0.474211
+    Na: 0.438678
+    Li-6: 0.028452
+    Li-7: 0.05822
+    Tl: 0.000439
+  mass density: 3.66
+322:
+  name: Sodium Nitrate
+  composition:
+    N: 0.2
+    O: 0.6
+    Na: 0.2
+  mass density: 2.261
+323:
+  name: Sodium Oxide
+  composition:
+    O: 0.333333
+    Na: 0.666667
+  mass density: 2.27
+324:
+  name: Steel, Boron Stainless
+  composition:
+    Cr: 0.196075
+    Ni: 0.118895
+    B: 0.056685
+    C: 0.002181
+    N: 0.000374
+    P: 0.000034
+    S: 0.000049
+    Co: 0.000267
+    Si: 0.012871
+    Mn: 0.018214
+    Fe: 0.594355
+  mass density: 7.87
+325:
+  name: Steel, HT9 Stainless
+  composition:
+    C: 0.009637
+    N: 0.000236
+    Al: 0.000613
+    Si: 0.004121
+    P: 0.000142
+    S: 0.000052
+    Ti: 0.000115
+    V: 0.00357
+    Cr: 0.125077
+    Mn: 0.005016
+    Fe: 0.839996
+    Ni: 0.004789
+    Mo: 0.005916
+    W: 0.00072
+  mass density: 7.874
+326:
+  name: Steel, High Carbon (1095)
+  composition:
+    C: 0.046122
+    Mn: 0.004895
+    P: 0.000695
+    S: 0.000839
+    Fe: 0.947449
+  mass density: 7.872
+327:
+  name: Steel, Low Carbon (1008)
+  composition:
+    C: 0.004629
+    Mn: 0.00506
+    P: 0.000718
+    S: 0.000867
+    Fe: 0.988726
+  mass density: 7.872
+328:
+  name: Steel, Medium Carbon (1045)
+  composition:
+    C: 0.022813
+    Mn: 0.008977
+    P: 0.000708
+    S: 0.000854
+    Fe: 0.966648
+  mass density: 7.872
+329:
+  name: Steel, Stainless 202
+  composition:
+    C: 0.006733
+    Mn: 0.085864
+    P: 0.001044
+    S: 0.000504
+    Si: 0.019196
+    Cr: 0.186629
+    Ni: 0.045926
+    N: 0.009622
+    Fe: 0.644482
+  mass density: 7.86
+330:
+  name: Steel, Stainless 302
+  composition:
+    C: 0.006783
+    Mn: 0.019772
+    P: 0.000789
+    S: 0.000508
+    Si: 0.019339
+    Cr: 0.188019
+    Ni: 0.083282
+    N: 0.003878
+    Fe: 0.67763
+  mass density: 7.86
+331:
+  name: Steel, Stainless 304
+  composition:
+    C: 0.003635
+    Mn: 0.01987
+    P: 0.000793
+    S: 0.000511
+    Si: 0.019434
+    Cr: 0.199443
+    Ni: 0.088343
+    Fe: 0.667971
+  mass density: 8.03
+332:
+  name: Steel, Stainless 304L
+  composition:
+    C: 0.003635
+    Mn: 0.01987
+    P: 0.000793
+    S: 0.000511
+    Si: 0.019434
+    Cr: 0.199443
+    Ni: 0.088343
+    Fe: 0.667971
+  mass density: 8
+333:
+  name: Steel, Stainless 316
+  composition:
+    C: 0.003683
+    Mn: 0.020128
+    P: 0.000803
+    S: 0.000517
+    Si: 0.019687
+    Cr: 0.180771
+    Ni: 0.113043
+    Mo: 0.014406
+    Fe: 0.646962
+  mass density: 8
+334:
+  name: Steel, Stainless 316L
+  composition:
+    C: 0.001384
+    Mn: 0.020165
+    P: 0.000805
+    S: 0.000518
+    Si: 0.019722
+    Cr: 0.181098
+    Ni: 0.113247
+    Mo: 0.014432
+    Fe: 0.648629
+  mass density: 8
+335:
+  name: Steel, Stainless 321
+  composition:
+    C: 0.00364
+    Mn: 0.019894
+    P: 0.000794
+    S: 0.000511
+    Si: 0.019457
+    Cr: 0.189172
+    Ni: 0.097759
+    Fe: 0.668773
+  mass density: 8
+336:
+  name: Steel, Stainless 347
+  composition:
+    C: 0.003653
+    Mn: 0.019968
+    P: 0.000797
+    S: 0.000513
+    Si: 0.01953
+    Cr: 0.189877
+    Ni: 0.098123
+    Nb: 0.005609
+    Fe: 0.66193
+  mass density: 8
+337:
+  name: Steel, Stainless 409
+  composition:
+    C: 0.001367
+    Mn: 0.009961
+    P: 0.000707
+    S: 0.000341
+    Si: 0.019484
+    Cr: 0.116819
+    Ni: 0.004662
+    N: 0.001172
+    Ti: 0.004916
+    Nb: 0.001001
+    Fe: 0.83957
+  mass density: 7.8
+338:
+  name: Steel, Stainless 440A
+  composition:
+    C: 0.030043
+    Mn: 0.00973
+    P: 0.00069
+    S: 0.0005
+    Si: 0.019034
+    Cr: 0.174775
+    Mo: 0.004178
+    Fe: 0.76105
+  mass density: 7.8
+339:
+  name: Steel, Stainless 440B
+  composition:
+    C: 0.037602
+    Mn: 0.009671
+    P: 0.000686
+    S: 0.000497
+    Si: 0.018918
+    Cr: 0.173713
+    Mo: 0.004153
+    Fe: 0.75476
+  mass density: 7.8
+340:
+  name: Steel, Stainless 440C
+  composition:
+    C: 0.047087
+    Mn: 0.009576
+    P: 0.000679
+    S: 0.000492
+    Si: 0.018732
+    Cr: 0.172001
+    Mo: 0.004112
+    Fe: 0.747321
+  mass density: 7.8
+341:
+  name: Sterotex
+  composition:
+    H: 0.635838
+    C: 0.32948
+    O: 0.034682
+  mass density: 0.862
+342:
+  name: Stilbene (trans-stilbene isomer)
+  composition:
+    H: 0.461538
+    C: 0.538462
+  mass density: 0.9707
+343:
+  name: Strontium Iodide - 2.5 atom% Europium doped
+  composition:
+    Sr: 0.330508
+    I: 0.661017
+    Eu: 0.008475
+  mass density: 4.59
+344:
+  name: Sulfuric acid
+  composition:
+    H: 0.285714
+    S: 0.142857
+    O: 0.571429
+  mass density: 1.84
+345:
+  name: Sulphur
+  composition:
+    S: 1
+  mass density: 2
+346:
+  name: TLYC
+  composition:
+    Tl: 0.2
+    Li: 0.1
+    Y: 0.1
+    Cl: 0.6
+  mass density: 4.58
+347:
+  name: Tantalum
+  composition:
+    Ta: 1
+  mass density: 16.654
+348:
+  name: Thorium
+  composition:
+    Th: 1
+  mass density: 11.72
+349:
+  name: Thorium Dioxide
+  composition:
+    O: 0.666667
+    Th: 0.333333
+  mass density: 9.7
+350:
+  name: Tin
+  composition:
+    Sn: 1
+  mass density: 7.31
+351:
+  name: Tissue Equivalent, MS20
+  composition:
+    H: 0.546349
+    C: 0.329488
+    N: 0.008619
+    O: 0.079014
+    Mg: 0.036358
+    Cl: 0.000172
+  mass density: 1
+352:
+  name: "Tissue Equivalent-Gas, methane based (TEG: MB)"
+  composition:
+    H: 0.60524
+    C: 0.22746
+    N: 0.015038
+    O: 0.152262
+  mass density: 0.001064
+353:
+  name: "Tissue Equivalent-Gas, propane based (TEG: PB)"
+  composition:
+    H: 0.598943
+    C: 0.278538
+    N: 0.014702
+    O: 0.107817
+  mass density: 0.001826
+354:
+  name: Tissue, Adipose (ICRP)
+  composition:
+    H: 0.634632
+    C: 0.284071
+    N: 0.003047
+    O: 0.077749
+    Na: 0.000116
+    Mg: 0.000004
+    P: 0.000028
+    S: 0.000122
+    Cl: 0.00018
+    K: 0.000044
+    Ca: 0.000003
+    Fe: 0.000002
+    Zn: 0.000002
+  mass density: 0.92
+355:
+  name: Tissue, Breast
+  composition:
+    H: 0.625772
+    C: 0.164488
+    N: 0.012745
+    O: 0.196005
+    Na: 0.000259
+    P: 0.000192
+    S: 0.000371
+    Cl: 0.000168
+  mass density: 1.02
+356:
+  name: Tissue, Lung (ICRP)
+  composition:
+    H: 0.633127
+    C: 0.053676
+    N: 0.012889
+    O: 0.298167
+    Na: 0.000504
+    Mg: 0.000189
+    P: 0.000163
+    S: 0.000442
+    Cl: 0.000473
+    K: 0.000313
+    Ca: 0.000014
+    Fe: 0.000042
+    Zn: 0.000001
+  mass density: 1.05
+357:
+  name: Tissue, Ovary
+  composition:
+    H: 0.643223
+    C: 0.047812
+    N: 0.01058
+    O: 0.2964
+    Na: 0.000537
+    P: 0.000399
+    S: 0.000385
+    Cl: 0.000348
+    K: 0.000316
+  mass density: 1.05
+358:
+  name: Tissue, Soft (ICRP)
+  composition:
+    H: 0.630445
+    C: 0.117591
+    N: 0.010805
+    O: 0.239606
+    Na: 0.000299
+    Mg: 0.000033
+    P: 0.000261
+    S: 0.000377
+    Cl: 0.00023
+    K: 0.00031
+    Ca: 0.000035
+    Fe: 0.000005
+    Zn: 0.000003
+  mass density: 1
+359:
+  name: Tissue, Soft (ICRU four component)
+  composition:
+    H: 0.630928
+    C: 0.058093
+    N: 0.011668
+    O: 0.299311
+  mass density: 1
+360:
+  name: Tissue, Testes (ICRP)
+  composition:
+    H: 0.641353
+    C: 0.047678
+    N: 0.008835
+    O: 0.300187
+    Na: 0.00061
+    Mg: 0.000028
+    P: 0.00025
+    S: 0.000283
+    Cl: 0.000427
+    K: 0.00033
+    Ca: 0.000015
+    Fe: 0.000002
+    Zn: 0.000002
+  mass density: 1.04
+361:
+  name: Tissue, Testis (ICRU)
+  composition:
+    H: 0.64517
+    C: 0.050569
+    N: 0.00876
+    O: 0.293726
+    Na: 0.000534
+    P: 0.000198
+    S: 0.000383
+    Cl: 0.000346
+    K: 0.000314
+  mass density: 1.04
+362:
+  name: Titanium
+  composition:
+    Ti: 1
+  mass density: 4.54
+363:
+  name: Titanium Dioxide
+  composition:
+    O: 0.666667
+    Ti: 0.333333
+  mass density: 4.26
+364:
+  name: Titanium Hydride
+  composition:
+    H: 0.666667
+    Ti: 0.333333
+  mass density: 3.75
+365:
+  name: Titanium alloy, grade 5
+  composition:
+    C: 0.003011
+    O: 0.00565
+    N: 0.001614
+    H: 0.006727
+    Fe: 0.003238
+    Al: 0.10261
+    V: 0.035493
+    Ti: 0.841657
+  mass density: 4.43
+366:
+  name: Toluene
+  composition:
+    H: 0.533333
+    C: 0.466667
+  mass density: 0.8669
+367:
+  name: Tributyl Borate
+  composition:
+    H: 0.627907
+    B: 0.023256
+    C: 0.27907
+    O: 0.069767
+  mass density: 0.8567
+368:
+  name: Tributyl Phosphate (TBP)
+  composition:
+    H: 0.613637
+    C: 0.272727
+    O: 0.090909
+    P: 0.022727
+  mass density: 0.978
+369:
+  name: Tungsten
+  composition:
+    W: 1
+  mass density: 19.3
+370:
+  name: Uranium Carbide
+  composition:
+    C: 0.5
+    U-234: 0.000136
+    U-235: 0.015186
+    U-236: 0.00007
+    U-238: 0.484609
+  mass density: 13.63
+371:
+  name: Uranium Dicarbide
+  composition:
+    C: 0.666667
+    U-234: 0.00009
+    U-235: 0.010124
+    U-236: 0.000046
+    U-238: 0.323072
+  mass density: 11.28
 372:
   name: Uranium Dioxide
   composition:
-    O:     0.666667
-    U-234: 0.000090
+    O: 0.666667
+    U-234: 0.00009
     U-235: 0.010124
     U-236: 0.000046
     U-238: 0.323072
   mass density: 10.96
+373:
+  name: Uranium Hexafluoride
+  composition:
+    F: 0.857143
+    U-234: 0.000039
+    U-235: 0.004339
+    U-236: 0.00002
+    U-238: 0.13846
+  mass density: 5.09
+374:
+  name: Uranium Hydride
+  composition:
+    H: 0.75
+    U-234: 0.000068
+    U-235: 0.007593
+    U-236: 0.000035
+    U-238: 0.242304
+  mass density: 11.1
+375:
+  name: Uranium Nitride
+  composition:
+    N: 0.5
+    U-234: 0.000136
+    U-235: 0.015186
+    U-236: 0.00007
+    U-238: 0.484609
+  mass density: 14.31
+376:
+  name: Uranium Oxide
+  composition:
+    O: 0.727273
+    U-234: 0.000074
+    U-235: 0.008283
+    U-236: 0.000038
+    U-238: 0.264332
+  mass density: 8.38
+377:
+  name: Uranium Tetrafluoride
+  composition:
+    F: 0.8
+    U-234: 0.000054
+    U-235: 0.006074
+    U-236: 0.000028
+    U-238: 0.193843
+  mass density: 6.7
+378:
+  name: Uranium Trioxide
+  composition:
+    O: 0.75
+    U-234: 0.000068
+    U-235: 0.007593
+    U-236: 0.000035
+    U-238: 0.242304
+  mass density: 7.29
+379:
+  name: Uranium, Depleted, Typical
+  composition:
+    U-234: 0.000005
+    U-235: 0.002532
+    U-238: 0.997463
+  mass density: 18.95
+380:
+  name: Uranium, Enriched, Typical Commercial
+  composition:
+    U-234: 0.00031
+    U-235: 0.029967
+    U-238: 0.969723
+  mass density: 18.944
+381:
+  name: Uranium, HEU, Health Physics Society
+  composition:
+    U-234: 0.010582
+    U-235: 0.932362
+    U-236: 0.002053
+    U-238: 0.055003
+  mass density: 18.724
+382:
+  name: Uranium, HEU, Russian Average
+  composition:
+    U-234: 0.009722
+    U-235: 0.898982
+    U-236: 0.003798
+    U-238: 0.087498
+  mass density: 18.732
+383:
+  name: Uranium, HEU, US Average
+  composition:
+    U-234: 0.009849
+    U-235: 0.932166
+    U-236: 0.004484
+    U-238: 0.053501
+  mass density: 18.724
+384:
+  name: Uranium, Low Enriched (LEU)
+  composition:
+    U-234: 0.000271
+    U-235: 0.030372
+    U-236: 0.000139
+    U-238: 0.969217
+  mass density: 18.944
+385:
+  name: Uranium, Natural (NU)
+  composition:
+    U-234: 0.000058
+    U-235: 0.007295
+    U-238: 0.992647
+  mass density: 18.95
+386:
+  name: Uranium-Plutonium, Mixed Oxide (MOX)
+  composition:
+    O: 0.666667
+    Pu-238: 0.00039
+    Pu-239: 0.008487
+    Pu-240: 0.004032
+    Pu-241: 0.001462
+    Pu-242: 0.001103
+    U-234: 0.000004
+    U-235: 0.000805
+    U-236: 0
+    U-238: 0.317052
+  mass density: 11
+387:
+  name: Uranyl Fluoride
+  composition:
+    O: 0.4
+    F: 0.4
+    U-234: 0.000054
+    U-235: 0.006074
+    U-236: 0.000028
+    U-238: 0.193843
+  mass density: 6.37
+388:
+  name: Uranyl Nitrate
+  composition:
+    N: 0.181818
+    O: 0.727273
+    U-234: 0.000025
+    U-235: 0.002761
+    U-236: 0.000013
+    U-238: 0.088111
+  mass density: 2.81
+389:
+  name: Vermiculite, Exfoliated
+  composition:
+    H: 0.197174
+    O: 0.520978
+    Mg: 0.092157
+    Al: 0.039305
+    Si: 0.11341
+    K: 0.009307
+    Ca: 0.006852
+    Ti: 0.003457
+    Fe: 0.017361
+  mass density: 0.085
+390:
+  name: Viton Fluoroelastomer
+  composition:
+    H: 0.133322
+    C: 0.333345
+    F: 0.533333
+  mass density: 1.8
+391:
+  name: Water, Heavy
+  composition:
+    H-2: 0.666667
+    O: 0.333333
+  mass density: 1.1044
+392:
+  name: Water, Liquid
+  composition:
+    H: 0.666667
+    O: 0.333333
+  mass density: 0.997
+393:
+  name: Water, Vapor
+  composition:
+    H: 0.666667
+    O: 0.333333
+  mass density: 0.000756182
+394:
+  name: Wax, M3
+  composition:
+    H: 0.632195
+    C: 0.304374
+    O: 0.032117
+    Mg: 0.030913
+    Ca: 0.000401
+  mass density: 1.05
+395:
+  name: Wax, Mix D
+  composition:
+    H: 0.658871
+    C: 0.320928
+    O: 0.010845
+    Mg: 0.007867
+    Ti: 0.001489
+  mass density: 0.99
+396:
+  name: Wax, Paraffin
+  composition:
+    H: 0.675325
+    C: 0.324675
+  mass density: 0.812
+397:
+  name: Wood (Southern Pine)
+  composition:
+    H: 0.462413
+    C: 0.323396
+    N: 0.002773
+    O: 0.208782
+    Mg: 0.000639
+    S: 0.001211
+    K: 0.000397
+    Ca: 0.000388
+  mass density: 0.64
+398:
+  name: Xenon
+  composition:
+    Xe: 1
+  mass density: 0.00548536
+399:
+  name: Yttrium Aluminum Oxide - 1 atom% Cerium
+  composition:
+    O: 0.4
+    Al: 0.5
+    Y: 0.1
+  mass density: 4.56
+400:
+  name: Yttrium Aluminum Perovslite - 0.5 atom% Cerium
+  composition:
+    Y: 0.199
+    Al: 0.597
+    O: 0.199
+    Ce: 0.005
+  mass density: 5.4
+401:
+  name: Zeolite (Natrolite)
+  composition:
+    H: 0.173913
+    O: 0.521738
+    Na: 0.086957
+    Al: 0.086957
+    Si: 0.130435
+  mass density: 2.25
+402:
+  name: Zinc
+  composition:
+    Zn: 1
+  mass density: 7.133
+403:
+  name: Zinc Selenide
+  composition:
+    Zn: 0.5
+    Se: 0.5
+  mass density: 5.27
+404:
+  name: Zinc Sulfide
+  composition:
+    S: 0.5
+    Zn: 0.5
+  mass density: 4.09
+405:
+  name: Zircaloy-2
+  composition:
+    O: 0.006797
+    Cr: 0.001742
+    Fe: 0.001622
+    Ni: 0.000772
+    Zr: 0.978381
+    Sn: 0.010686
+  mass density: 6.56
+406:
+  name: Zircaloy-4
+  composition:
+    O: 0.00679
+    Cr: 0.001741
+    Fe: 0.003242
+    Zr: 0.97755
+    Sn: 0.010677
+  mass density: 6.56
+407:
+  name: Zirconium
+  composition:
+    Zr: 1
+  mass density: 6.52
+408:
+  name: Zirconium Hydride (Zr5H8)
+  composition:
+    H: 0.615385
+    Zr: 0.384615
+  mass density: 5.61
+409:
+  name: Zirconium Hydride (ZrH2)
+  composition:
+    H: 0.666667
+    Zr: 0.333333
+  mass density: 5.6
+410:
+  name: "ZnS(Ag):LiF 95wt% 6Li PHOSPHOR POWDER Neutron Detectors"
+  composition:
+    Zn: 0.439541
+    S: 0.439541
+    F: 0.060459
+    Li-6: 0.057849
+    Li-7: 0.00261
+  mass density: 4.09
+411:
+  name: "ZnS:Ag PHOSPHOR POWDER EJ-600 for Neutron Detectors"
+  composition:
+    Zn: 0.5
+    S: 0.5
+  mass density: 4.09
