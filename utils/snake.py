@@ -80,10 +80,10 @@ def get_arguments():
  \▓▓    ▓▓ ▓▓  | ▓▓\▓▓    ▓▓ ▓▓  \▓▓\\▓▓     \
   \▓▓▓▓▓▓ \▓▓   \▓▓ \▓▓▓▓▓▓▓\▓▓   \▓▓ \▓▓▓▓▓▓▓
 
---------------------------------------------
-Scriptable Nesting and Keying Engine (SNAKE)
-     (A Python implementation of WORM)
---------------------------------------------
+----------------------------------------------
+ Scriptable Nesting and Keying Engine (SNAKE)
+ (A Python implementation & extension of WORM)
+----------------------------------------------
 
 This tool creates permutations of a file, with the
 permutations determined by the cartesian product of key
@@ -121,8 +121,8 @@ The following Python/NumPy functions can be used:
 
 User-defined functions can also be imported.
 
-The following material functions are available:
-""" + f"{linesep}".join([f'- {k}(#)' for k in material_fns]) + """
+The following material composition and mixing functions are available:
+""" + f"{linesep}".join([f'- {k}' for k in material_fns]) + """
 
 The following built-in constants are available:
 """ + f"{linesep}".join([f'- {k:4s} : {v}' for k, v in constants.items()]) + """
