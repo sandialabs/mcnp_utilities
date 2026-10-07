@@ -173,15 +173,16 @@ class Material:
     self.normalize()
 
   def add_nuclide(self, nuclide, fraction):
-    # Append nuclide to nuclide list if not already present
-    if nuclide.zaid not in [n.zaid for n in self.nuclides]:
-      self.nuclides.append(nuclide)
+    if fraction > 0:
+      # Append nuclide to nuclide list if not already present
+      if nuclide.zaid not in [n.zaid for n in self.nuclides]:
+        self.nuclides.append(nuclide)
 
-    # Add fraction to the correct dictionary
-    if self.frac_type == 'atom':
-      self.nuclide_atom_fractions[nuclide.zaid] += fraction
-    elif self.frac_type == 'weight':
-      self.nuclide_weight_fractions[nuclide.zaid] += fraction
+      # Add fraction to the correct dictionary
+      if self.frac_type == 'atom':
+        self.nuclide_atom_fractions[nuclide.zaid] += fraction
+      elif self.frac_type == 'weight':
+        self.nuclide_weight_fractions[nuclide.zaid] += fraction
 
   def split_elements(self, split_carbon=True):
     # Create new list of nuclides
@@ -327,7 +328,7 @@ class Material:
         table['Weight Fraction'] = [to_latex_scientific_notation(f'{self.nuclide_weight_fractions[n.zaid]:{fmt}}') if 'e' in fmt.lower() else f'{self.nuclide_atom_fractions[n.zaid]:{fmt}}' for n in self.nuclides]
     PrintedTable(table).write_latex_longtable(file_path, bold_headers=True)
 
-def mix_materials(mats, fractions, frac_type, num=1):
+def mix_materials(mats, fractions, frac_type, num=1, card: bool=False, name: str=None, split: bool=False):
   new_mat = Material(frac_type=frac_type, number=num)
   for mat, frac in zip(mats, fractions):
     for nuclide in mat.nuclides:
@@ -336,9 +337,16 @@ def mix_materials(mats, fractions, frac_type, num=1):
       elif frac_type == 'weight':
         new_mat.add_nuclide(nuclide, frac * mat.nuclide_weight_fractions[nuclide.zaid])
   new_mat.normalize()
-  return new_mat
+  if split:
+    new_mat.split_elements()
+  if name is not None:
+    new_mat.name = name
+  if card:
+    return new_mat.to_MCNP_material_card(frac_type)
+  else:
+    return new_mat
 
-def get_compendium_material(library, index: int=None, name: str=None) -> Material:
+def get_compendium_material(library, index: int=None, name: str=None, split: bool=False) -> Material:
   """
   Obtain material reference from PNNL's Compendium of Material Composition Data for Radiation Transport Modeling (rev. 2) [PNNL-15870]
   """
@@ -358,17 +366,24 @@ def get_compendium_material(library, index: int=None, name: str=None) -> Materia
         break
   if this_mat is None:
     raise ValueError('Could not find referenced material!')
-  return Material('atom', nuclides=this_mat['composition'], density=-this_mat['mass density'], name=this_mat['name'])
+  mat = Material('atom', nuclides=this_mat['composition'], density=-this_mat['mass density'], name=this_mat['name'])
+  if split:
+    mat.split_elements()
+  return mat
 
-def get_compendium_material_card(library: str, mat_no: int, index: int=None, name: str=None, frac_type: str='atom', fmt_str: str='.6E') -> str:
+def get_compendium_material_card(library: str, mat_no: int, index: int=None, name: str=None, frac_type: str='atom', fmt_str: str='.6E', split: bool=False) -> str:
   """
   Obtain material card reference by index from PNNL's Compendium of Material Composition Data for Radiation Transport Modeling (rev. 2) [PNNL-15870]
   """
-  if index is not None:
+  if (name is not None) and (index is not None):
+    raise ValueError('Name and index cannot both be provided!')
+  elif index is not None:
     mat = get_compendium_material(library, index=index)
   elif name is not None:
     mat = get_compendium_material(library, name=name)
   else:
     raise ValueError('Must provide either index or name keyword arguments!')
   mat.number = mat_no
+  if split:
+    mat.split_elements()
   return mat.to_MCNP_material_card(frac_type, frac_fmt=fmt_str)

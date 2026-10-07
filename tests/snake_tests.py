@@ -153,5 +153,20 @@ class TestSnake(unittest.TestCase):
       'test-6_2' : '(3, 14, 6)',
     })
 
+  def test_basic_7(self):
+    """
+    Docstring for test_basic_7
+
+    Tests that f-strings with nested braces are handled correctly.
+    """
+    args = InputArgs(pjoin(input_dir, 'test-7.snake'))
+    snake(args, quiet=True)
+
+    self.checkAnswers({
+      'test-7_0' : 'the value of x is: 1, this is a string containing x: 1',
+      'test-7_1' : 'the value of x is: 2, this is a string containing x: 2',
+      'test-7_2' : 'the value of x is: 3, this is a string containing x: 3',
+    })
+
 if __name__ == '__main__':
   unittest.main()

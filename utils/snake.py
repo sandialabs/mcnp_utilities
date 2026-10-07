@@ -21,7 +21,7 @@ from random import random, randint
 from keyword import kwlist
 from re import compile
 # Local modules
-from mcnp_utilities.lib.materials import get_compendium_material_card
+from mcnp_utilities.lib.materials import get_compendium_material, get_compendium_material_card, mix_materials
 from mcnp_utilities.lib.basic_tools import create_nested_path
 
 
@@ -57,7 +57,9 @@ allowable_fns = {
   'random'   : random, 'randint'  : randint
 }
 material_fns = {
-  'get_compendium_material_card' : get_compendium_material_card
+  'get_compendium_material'      : get_compendium_material,
+  'get_compendium_material_card' : get_compendium_material_card,
+  'mix_materials'                : mix_materials
 }
 allowable_fns.update(material_fns)
 
@@ -265,71 +267,121 @@ def find_top_level_assignment(expression):
 
   return -1
 
+def find_matching_brace(text, open_idx):
+  '''
+  Find the closing brace that matches text[open_idx].
+
+  Braces inside quoted strings are ignored, so expressions like
+
+    {mat_name = f'{x} wt. % water'}
+
+  are parsed as one complete Snake expression instead of stopping at
+  the inner f-string brace.
+  '''
+  quote = None
+  escaped = False
+  brace_depth = 0
+
+  for i in range(open_idx + 1, len(text)):
+    char = text[i]
+
+    if quote:
+      if escaped:
+        escaped = False
+      elif char == '\\':
+        escaped = True
+      elif char == quote:
+        quote = None
+      continue
+
+    if char in ('"', "'"):
+      quote = char
+      continue
+
+    if char == '{':
+      brace_depth += 1
+      continue
+
+    if char == '}':
+      if brace_depth == 0:
+        return i
+      brace_depth -= 1
+      continue
+
+  raise ValueError(f'Unmatched opening brace in line: {text.rstrip()}')
+
 def process_line(text, permutations, not_evaluated, new_constants, new_allowable_fns):
   '''
-  Process a line if it contains (an) expression(s).
+  Process a line if it contains expression(s).
   '''
-  for i, char in enumerate(text):
-    if char == '{':
-      start_idx = i + 1
-      end_idx = text[start_idx:].index('}')
-      expression = text[start_idx:start_idx + end_idx]
+  i = 0
 
-      assignment_idx = find_top_level_assignment(expression)
+  while i < len(text):
+    if text[i] != '{':
+      i += 1
+      continue
 
-      # Not an assignment; leave it alone so replace_line() can evaluate it later.
-      if assignment_idx == -1:
-        continue
+    close_idx = find_matching_brace(text, i)
+    expression = text[i + 1:close_idx]
 
-      name = expression[:assignment_idx].strip()
-      expr = expression[assignment_idx + 1:].strip()
+    assignment_idx = find_top_level_assignment(expression)
 
-      # If the left side is not a valid Snake assignment target, skip it.
-      # This prevents things like my_func(a=1) from being parsed as:
-      # name = "my_func(a"
-      # expr = "1)"
-      if not _ASSIGNMENT_LHS_RE.match(name):
-        continue
+    # Not an assignment; leave it alone so replace_line() can evaluate it later.
+    if assignment_idx == -1:
+      i = close_idx + 1
+      continue
 
-      if name.startswith('@'):
-        permutations[name[1:]] = evaluate(
-          name[1:],
+    name = expression[:assignment_idx].strip()
+    expr = expression[assignment_idx + 1:].strip()
+
+    # If the left side is not a valid Snake assignment target, skip it.
+    if not _ASSIGNMENT_LHS_RE.match(name):
+      i = close_idx + 1
+      continue
+
+    if name.startswith('@'):
+      permutations[name[1:]] = evaluate(
+        name[1:],
+        expr,
+        new_constants,
+        not_evaluated,
+        new_allowable_fns
+      )
+    else:
+      if ',' in name:
+        names = [n.strip() for n in name.split(',')]
+        values = evaluate(
+          ', '.join(names),
           expr,
           new_constants,
           not_evaluated,
           new_allowable_fns
         )
-      else:
-        if ',' in name:
-          names = [n.strip() for n in name.split(',')]
-          values = evaluate(
-            ', '.join(names),
-            expr,
-            new_constants,
-            not_evaluated,
-            new_allowable_fns
-          )
 
-          if values is not None:
-            if len(values) != len(names):
-              raise ValueError(
-                f'Cannot unpack {len(values)} values into {len(names)} variables: {name} = {expr}'
-              )
+        if values is not None:
+          if len(values) != len(names):
+            raise ValueError(
+              f'Cannot unpack {len(values)} values into {len(names)} variables: {name} = {expr}'
+            )
 
-            for n, value in zip(names, values):
-              new_constants[n] = value
-          else:
-            for i, n in enumerate(names):
-              new_constants[n] = None
-              not_evaluated[n] = f'({expr})[{i}]'
+          for n, value in zip(names, values):
+            new_constants[n] = value
         else:
-          new_constants[name] = evaluate(
-            name,
-            expr,
-            new_constants,
-            not_evaluated,
-            new_allowable_fns
-          )
+          for j, n in enumerate(names):
+            new_constants[n] = None
+            not_evaluated[n] = f'({expr})[{j}]'
+      else:
+        new_constants[name] = evaluate(
+          name,
+          expr,
+          new_constants,
+          not_evaluated,
+          new_allowable_fns
+        )
+
+    # Skip over the entire expression so we do not parse nested f-string
+    # fields like {x} as separate Snake expressions.
+    i = close_idx + 1
 
 def replace_line(text, vars, not_evaluated, new_allowable_fns):
   '''
@@ -337,8 +389,8 @@ def replace_line(text, vars, not_evaluated, new_allowable_fns):
   '''
   while '{' in text:
     start_idx = text.index('{')
-    end_idx = text[start_idx:].index('}') + 1
-    v = text[start_idx:(start_idx + end_idx)]
+    close_idx = find_matching_brace(text, start_idx)
+    v = text[start_idx:close_idx + 1]
 
     evaluated_variable = evaluate(
       v,
@@ -394,7 +446,10 @@ def write_file(args, fname, lines, file_number, total_files, vars, not_evaluated
   with open(fname, 'w') as f:
     for line in lines:
       if not line.startswith(args.comment_char):
-        f.write(replace_line(line, vars, not_evaluated, new_allowable_fns)) if '{' and '}' in line else f.write(line)
+        if '{' in line and '}' in line:
+          f.write(replace_line(line, vars, not_evaluated, new_allowable_fns))
+        else:
+          f.write(line)
     if not quiet:
       print(f'|>{(round(36*((file_number+1)/total_files))*"≈" + ">"):<37s}|', end='\r')
 
@@ -408,7 +463,11 @@ def snake(args, quiet=False):
   with open(args.input, 'r') as f:
     input_lines = f.readlines()
   # Read in all constants and lists of perumtation values
-  [process_line(line, permutations, not_evaluated, new_constants, new_allowable_fns) for line in input_lines if '{' and '}' in line]
+  [
+    process_line(line, permutations, not_evaluated, new_constants, new_allowable_fns)
+    for line in input_lines
+    if '{' in line and '}' in line
+  ]
   # Attempt to evaluate any expressions in keys that could not be evaluated on first pass (save expressions that are still unresolved, i.e., those depending on key values)
   resolved = []
   for k, v in not_evaluated.items():
