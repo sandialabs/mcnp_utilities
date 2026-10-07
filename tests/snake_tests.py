@@ -222,5 +222,29 @@ class TestSnake(unittest.TestCase):
       ]
     })
 
+  def test_basic_11(self):
+    """
+    Docstring for test_basic_11
+
+    Tests material generation from PNNL compendium and mixing.
+    """
+    args = InputArgs(pjoin(input_dir, 'test-11.snake'))
+    snake(args, quiet=True)
+
+    self.checkAnswers({
+      'test-11_0' : [
+        'C Material 1',
+        'M1    1001  -5.593641E-02 $ Hydrogen-1',
+        '      1002  -1.285697E-05 $ Hydrogen-2',
+        '      8016  -5.019535E-01 $ Oxygen-16',
+        '      8017  -2.032116E-04 $ Oxygen-17',
+        '      8018  -1.160765E-03 $ Oxygen-18',
+        '      92234  -1.170396E-04 $ Uranium-234',
+        '      92235  -1.322207E-02 $ Uranium-235',
+        '      92236  -6.033259E-05 $ Uranium-236',
+        '      92238  -4.273338E-01 $ Uranium-238'
+      ],
+    })
+
 if __name__ == '__main__':
   unittest.main()

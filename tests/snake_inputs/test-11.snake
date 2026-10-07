@@ -1,0 +1,4 @@
+# {@x = [1]}
+# {water = get_compendium_material('PNNL', name='Water, Liquid')}
+# {uo2 = get_compendium_material('PNNL', name='Uranium Dioxide')}
+{mix_materials([water, uo2], [0.5, 0.5], 'weight', card=True, split=True)}
