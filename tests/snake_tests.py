@@ -168,5 +168,29 @@ class TestSnake(unittest.TestCase):
       'test-7_2' : 'the value of x is: 3, this is a string containing x: 3',
     })
 
+  def test_basic_8(self):
+    """
+    Docstring for test_basic_8
+
+    Tests constants that are correctly evaluated on a second pass.
+    """
+    args = InputArgs(pjoin(input_dir, 'test-8.snake'))
+    snake(args, quiet=True)
+
+    self.checkAnswers({
+      'test-8_0' : 'value = 3'
+    })
+
+  def test_basic_9(self):
+    """
+    Docstring for test_basic_9
+
+    Tests that non-iterable key values raise a TypeError.
+    """
+    args = InputArgs(pjoin(input_dir, 'test-9.snake'))
+
+    with self.assertRaises(TypeError):
+      snake(args, quiet=True)
+
 if __name__ == '__main__':
   unittest.main()

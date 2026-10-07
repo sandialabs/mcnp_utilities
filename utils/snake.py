@@ -15,11 +15,11 @@ from itertools import product
 from importlib import import_module
 from sys import path
 from os import linesep
-from os.path import realpath, dirname, split as psplit, join as pjoin
+from os.path import realpath, dirname, split as psplit, join as pjoin, splitext
 from datetime import datetime
 from random import random, randint
-from keyword import kwlist
 from re import compile
+from collections.abc import Iterable
 # Local modules
 from mcnp_utilities.lib.materials import get_compendium_material, get_compendium_material_card, mix_materials
 from mcnp_utilities.lib.basic_tools import create_nested_path
@@ -101,15 +101,17 @@ name (but keys must start with an @ symbol), and are set
 using an equals sign. Constants may be scalars or lists
 (created using Python list syntax). Keys must be lists.
 
-Constants can be set using Python's multi-variable
-assignment syntax, but the right hand side MUST be
-indexable. For example, the following assignment is valid:
+Constants can be set using Python's multi-variable assignment syntax.
 
-{a, b = (1, 2)}
-
-but the following is not:
+Examples:
 
 {a, b = 1, 2}
+{a, b = (1, 2)}
+{a, b = [1, 2]}
+{a, b = get_pair()}
+
+The right-hand side must evaluate to an iterable with the same number
+of values as the number of target variables.
 
 This will not work for keys.
 
@@ -207,6 +209,13 @@ c x={x} y={y:.3f} z={z:<.5f} c[1]={c[1]:^10g} b={b:>5n}""", formatter_class=RawD
   )
   return parser.parse_args()
 
+def validate_permutations(permutations):
+  for key, values in permutations.items():
+    if isinstance(values, str) or not isinstance(values, Iterable):
+      raise TypeError(
+        f'Permutation key "{key}" must evaluate to a non-string iterable; got {values!r}'
+      )
+
 def evaluate(vname, string, vars, not_evaluated, new_allowable_fns):
   '''
   Evaluate an expression based on defined constants.
@@ -214,12 +223,15 @@ def evaluate(vname, string, vars, not_evaluated, new_allowable_fns):
   '''
   try:
     result = eval(string, new_allowable_fns, vars)
-    if result is not None:
-      return result
-    else:
-      not_evaluated[vname] = string
-  except:
+  except NameError:
     not_evaluated[vname] = string
+    return None
+
+  if result is not None:
+    return result
+
+  not_evaluated[vname] = string
+  return None
 
 def find_top_level_assignment(expression):
   '''
@@ -310,7 +322,14 @@ def find_matching_brace(text, open_idx):
 
   raise ValueError(f'Unmatched opening brace in line: {text.rstrip()}')
 
-def process_line(text, permutations, not_evaluated, new_constants, new_allowable_fns):
+def process_line(
+    text,
+    permutations,
+    deferred_constants,
+    deferred_permutations,
+    new_constants,
+    new_allowable_fns
+  ):
   '''
   Process a line if it contains expression(s).
   '''
@@ -340,11 +359,13 @@ def process_line(text, permutations, not_evaluated, new_constants, new_allowable
       continue
 
     if name.startswith('@'):
-      permutations[name[1:]] = evaluate(
-        name[1:],
+      key_name = name[1:]
+
+      permutations[key_name] = evaluate(
+        key_name,
         expr,
         new_constants,
-        not_evaluated,
+        deferred_permutations,
         new_allowable_fns
       )
     else:
@@ -354,7 +375,7 @@ def process_line(text, permutations, not_evaluated, new_constants, new_allowable
           ', '.join(names),
           expr,
           new_constants,
-          not_evaluated,
+          deferred_constants,
           new_allowable_fns
         )
 
@@ -369,13 +390,13 @@ def process_line(text, permutations, not_evaluated, new_constants, new_allowable
         else:
           for j, n in enumerate(names):
             new_constants[n] = None
-            not_evaluated[n] = f'({expr})[{j}]'
+            deferred_constants[n] = f'({expr})[{j}]'
       else:
         new_constants[name] = evaluate(
           name,
           expr,
           new_constants,
-          not_evaluated,
+          deferred_constants,
           new_allowable_fns
         )
 
@@ -383,7 +404,7 @@ def process_line(text, permutations, not_evaluated, new_constants, new_allowable
     # fields like {x} as separate Snake expressions.
     i = close_idx + 1
 
-def replace_line(text, vars, not_evaluated, new_allowable_fns):
+def replace_line(text, vars, new_allowable_fns):
   '''
   Replace instances of formatted variables in a line.
   '''
@@ -392,24 +413,15 @@ def replace_line(text, vars, not_evaluated, new_allowable_fns):
     close_idx = find_matching_brace(text, start_idx)
     v = text[start_idx:close_idx + 1]
 
-    evaluated_variable = evaluate(
-      v,
-      f'f{v!r}',
-      vars,
-      not_evaluated,
-      new_allowable_fns
-    )
-
-    if evaluated_variable is not None:
-      text = text.replace(v, evaluated_variable, 1)
-    else:
+    try:
+      evaluated_variable = eval(f'f{v!r}', new_allowable_fns, vars)
+    except NameError as err:
       var_name = v.strip('{}').split(':')[0]
-      if var_name in kwlist:
-        raise ValueError(
-          f'Variable "{var_name}" is a Python keyword and cannot be used as a variable name!'
-        )
-      else:
-        raise TypeError(f'Variable "{var_name}" is undefined!')
+      raise TypeError(f'Variable "{var_name}" is undefined!') from err
+    except Exception as err:
+      raise RuntimeError(f'Failed to evaluate output expression {v!r}') from err
+
+    text = text[:start_idx] + str(evaluated_variable) + text[close_idx + 1:]
 
   return text
 
@@ -426,35 +438,50 @@ def get_file_name(argo, indicies, kvs):
   '''
   Determine file name based on input arguments.
   '''
+  ext = argo.extension
+  if ext and not ext.startswith('.'):
+    ext = '.' + ext
+
+  base = splitext(psplit(argo.input)[-1])[0]
+
   if argo.naming == 'i':
-    fname = f'{psplit(argo.input)[-1].rsplit(".")[0]}{argo.delimiter}{(argo.delimiter).join(indicies)}{"." + argo.extension if argo.extension else ""}'
+    fname = f'{base}{argo.delimiter}{(argo.delimiter).join(indicies)}{ext if ext else ""}'
   elif argo.naming == 'v':
-    fname = f'{psplit(argo.input)[-1].rsplit(".")[0]}{argo.delimiter}{(argo.delimiter).join((str(kv) for kv in kvs))}{"." + argo.extension if argo.extension else ""}'
+    fname = f'{base}{argo.delimiter}{(argo.delimiter).join((str(kv) for kv in kvs))}{ext if ext else ""}'
+
   if argo.organize:
     if argo.naming == 'i':
       key_path = pjoin(*indicies)
     elif argo.naming == 'v':
       key_path = pjoin(*(str(kv) for kv in kvs))
     fname = pjoin(key_path, fname)
+
   return fname
 
-def write_file(args, fname, lines, file_number, total_files, vars, not_evaluated, new_allowable_fns, quiet):
+def write_file(args, fname, lines, file_number, total_files, vars, new_allowable_fns, quiet):
   '''
   Write a file with a specific set of key values.
   '''
-  create_nested_path(dirname(fname))
+  folder = dirname(fname)
+  if folder:
+    create_nested_path(folder)
   with open(fname, 'w') as f:
     for line in lines:
       if not line.startswith(args.comment_char):
         if '{' in line and '}' in line:
-          f.write(replace_line(line, vars, not_evaluated, new_allowable_fns))
+          f.write(replace_line(line, vars, new_allowable_fns))
         else:
           f.write(line)
     if not quiet:
       print(f'|>{(round(36*((file_number+1)/total_files))*"≈" + ">"):<37s}|', end='\r')
 
 def snake(args, quiet=False):
-  not_evaluated, permutations, key_file, new_constants, new_allowable_fns = {}, {}, None, copy(constants), copy(allowable_fns)
+  deferred_constants = {}
+  deferred_permutations = {}
+  permutations = {}
+  key_file = None
+  new_constants = copy(constants)
+  new_allowable_fns = copy(allowable_fns)
   # Read external functions from specified file (if callable)
   if args.library:
     path.append(dirname(realpath(args.library)))
@@ -464,23 +491,56 @@ def snake(args, quiet=False):
     input_lines = f.readlines()
   # Read in all constants and lists of perumtation values
   [
-    process_line(line, permutations, not_evaluated, new_constants, new_allowable_fns)
+    process_line(
+      line,
+      permutations,
+      deferred_constants,
+      deferred_permutations,
+      new_constants,
+      new_allowable_fns
+    )
     for line in input_lines
     if '{' in line and '}' in line
   ]
   # Attempt to evaluate any expressions in keys that could not be evaluated on first pass (save expressions that are still unresolved, i.e., those depending on key values)
-  resolved = []
-  for k, v in not_evaluated.items():
-    try:
-      result = eval(v, new_allowable_fns, new_constants)
+  resolved_any = True
+
+  while resolved_any:
+    resolved_any = False
+
+    # First resolve deferred constants that only depend on other constants.
+    for k, expr in list(deferred_constants.items()):
+      try:
+        result = eval(expr, new_allowable_fns, new_constants)
+      except NameError:
+        continue
+
+      if result is not None:
+        new_constants[k] = result
+        del deferred_constants[k]
+        resolved_any = True
+
+    # Then resolve deferred permutation keys that depend on constants.
+    for k, expr in list(deferred_permutations.items()):
+      try:
+        result = eval(expr, new_allowable_fns, new_constants)
+      except NameError:
+        continue
+
       if result is not None:
         permutations[k] = result
-        resolved.append(k)
-      else:
-        continue
-    except:
-      pass
-  not_evaluated = {k : v for k, v in not_evaluated.items() if k not in resolved}
+        del deferred_permutations[k]
+        resolved_any = True
+
+  if deferred_permutations:
+    unresolved = ', '.join(
+      f'{k} = {expr}' for k, expr in deferred_permutations.items()
+    )
+    raise NameError(
+      f'The following key expressions could not be resolved before file generation: {unresolved}'
+    )
+  validate_permutations(permutations)
+
   # Print info and ask for confirmation (if not overridden)
   if not quiet:
     print(f'The following keys are identified:{linesep}')
@@ -509,29 +569,44 @@ def snake(args, quiet=False):
       exit()
     else:
       print()
-  for fnum, t in enumerate(product(*list(permutations.values()))):
+  indexed_values = [
+    list(enumerate(values))
+    for values in permutations.values()
+  ]
+  for fnum, combo in enumerate(product(*indexed_values)):
+    idxs = [str(idx) for idx, value in combo]
+    t = [value for idx, value in combo]
     # Copy existing constants
     iter_constants = copy(new_constants)
-    # Get the indicies of the permutation
-    idxs = [str(where(asarray(permutations[k]) == t[i])[0][0]) for i, k in enumerate(permutations)]
     # Add current permutation to variable dict
     for k, v in zip(permutations, t):
       iter_constants[k] = v
     # (Re)evaluate all expressions that depend on key values and update evaluator with new variables
     while any(v is None for v in iter_constants.values()):
       num_none = sum(v is None for v in iter_constants.values())
-      for k, v in not_evaluated.items():
-        iter_constants[k] = evaluate(k, v, iter_constants, not_evaluated, new_allowable_fns)
+      for k, expr in deferred_constants.items():
+        scratch_deferred = {}
+        iter_constants[k] = evaluate(
+          k,
+          expr,
+          iter_constants,
+          scratch_deferred,
+          new_allowable_fns
+        )
       if sum(v is None for v in iter_constants.values()) == num_none:
         if not quiet:
           print('The following variables and expressions evaluate to None:')
-          for name, none_expr in [(k, v) for k, v in not_evaluated.items() if evaluate(k, v, iter_constants, not_evaluated, new_allowable_fns) is None]:
+          for name, none_expr in [
+            (k, v)
+            for k, v in deferred_constants.items()
+            if evaluate(k, v, iter_constants, deferred_constants, new_allowable_fns) is None
+          ]:
             print(f' - {name} : {none_expr}')
         raise RecursionError('Expressions are not being resolved! Ensure that user-defined functions cannot return None.')
     # Construct file name based on input arguments
     file_name = get_file_name(args, idxs, t)
     # Write current permutation to file
-    write_file(args, file_name, input_lines, fnum, nfiles, iter_constants, not_evaluated, new_allowable_fns, quiet)
+    write_file(args, file_name, input_lines, fnum, nfiles, iter_constants, new_allowable_fns, quiet)
     if args.keyfile:
       key_file.write(f'{file_name} {",".join(str(tv) for tv in t)}{linesep}')
   if args.keyfile:
