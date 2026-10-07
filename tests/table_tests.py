@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-import unittest
+from unittest import TestCase, main
 from pandas import DataFrame as PandasDataFrame
 from polars import DataFrame as PolarsDataFrame
 from mcnp_utilities.lib.tables import PrintedTable
 
 
-class TestPrintedTable(unittest.TestCase):
+class TestPrintedTable(TestCase):
   def test_different_init_table(self):
     my_pt = PrintedTable(df=PandasDataFrame({'h1' : ['a', 'b', 'c'], 'h2' : [1, 2, 3]}))
     df_pandas_init = my_pt.to_latex_table()
@@ -35,4 +35,4 @@ class TestPrintedTable(unittest.TestCase):
     self.assertMultiLineEqual(df_pandas_init, df_polars_init)
 
 if __name__ == '__main__':
-  unittest.main()
+  main()

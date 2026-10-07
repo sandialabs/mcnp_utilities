@@ -2,7 +2,7 @@
 
 from os.path import dirname, join as pjoin
 from yaml import safe_load
-import unittest
+from unittest import TestCase, main
 from mcnp_utilities.lib.materials import Isotope, Element, Material, mix_materials, zaid_to_ZA, get_isotope_mass
 
 
@@ -10,7 +10,7 @@ with open(pjoin(dirname(__file__), '..', 'data', 'iso_ref.yaml'), 'r') as f:
   iref = safe_load(f)
 
 
-class TestIsotope(unittest.TestCase):
+class TestIsotope(TestCase):
   def test_initialization(self):
     isotope = Isotope('8016')
     self.assertEqual(isotope.name, 'Oxygen-16')
@@ -48,7 +48,7 @@ class TestIsotope(unittest.TestCase):
     self.assertEqual(str(isotope), 'Oxygen-16')
 
 
-class TestElement(unittest.TestCase):
+class TestElement(TestCase):
   def test_initialization(self):
     element = Element(8)
     self.assertEqual(element.Z, 8)
@@ -82,7 +82,7 @@ class TestElement(unittest.TestCase):
     self.assertEqual(str(element), 'Oxygen')
 
 
-class TestMaterial(unittest.TestCase):
+class TestMaterial(TestCase):
   def test_initialization_list(self):
     nucs = {'6012' : 0.5, '8016' : 0.5}
     material = Material('atom', nuclides=nucs)
@@ -134,4 +134,4 @@ class TestMaterial(unittest.TestCase):
     self.assertEqual(new_mat.number, 2)
 
 if __name__ == '__main__':
-  unittest.main()
+  main()

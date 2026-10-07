@@ -4,7 +4,7 @@ from os import chdir, getcwd, mkdir
 from os.path import dirname, exists, join as pjoin
 from shutil import rmtree
 from mcnp_utilities.utils.snake import snake, SNAKE_DEFAULTS
-import unittest
+from unittest import TestCase, main
 
 
 input_dir = pjoin(dirname(__file__), 'snake_inputs')
@@ -23,7 +23,7 @@ class InputArgs:
     self.extension = SNAKE_DEFAULTS['FILE_EXTENSION']
     self.organize = SNAKE_DEFAULTS['ORGANIZE']
 
-class TestSnake(unittest.TestCase):
+class TestSnake(TestCase):
   def setUp(self) -> None:
     """
     Docstring for setUp
@@ -239,12 +239,12 @@ class TestSnake(unittest.TestCase):
         '      8016  -5.019535E-01 $ Oxygen-16',
         '      8017  -2.032116E-04 $ Oxygen-17',
         '      8018  -1.160765E-03 $ Oxygen-18',
-        '      92234  -1.170396E-04 $ Uranium-234',
-        '      92235  -1.322207E-02 $ Uranium-235',
-        '      92236  -6.033259E-05 $ Uranium-236',
-        '      92238  -4.273338E-01 $ Uranium-238'
+        '     92234  -1.170396E-04 $ Uranium-234',
+        '     92235  -1.322207E-02 $ Uranium-235',
+        '     92236  -6.033259E-05 $ Uranium-236',
+        '     92238  -4.273338E-01 $ Uranium-238'
       ],
     })
 
 if __name__ == '__main__':
-  unittest.main()
+  main()

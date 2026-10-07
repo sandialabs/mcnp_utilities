@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 
-import unittest
+from unittest import TestCase, main
 import numpy as np
 from mcnp_utilities.utils.paramesh import cell
 
 
-class TestParamesh(unittest.TestCase):
+class TestParamesh(TestCase):
 
   test_points = np.array([
     [0, 0, 0],
@@ -56,4 +56,4 @@ class TestParamesh(unittest.TestCase):
 
 
 if __name__ == '__main__':
-  unittest.main()
+  main()

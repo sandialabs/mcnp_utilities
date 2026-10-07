@@ -37,7 +37,7 @@ def determine_components(s):
       start = current
   return components
 
-def process_input(inp_str, lvl):
+def process_input(inp_str, lvl, quiet=False):
   comps = determine_components(inp_str[1:-1] if (inp_str.startswith('(') and inp_str.endswith(')')) else inp_str)
   if len(comps) > 1:
     fracs = [float(comp.rsplit(':', maxsplit=1)[1]) for comp in comps]
@@ -46,8 +46,9 @@ def process_input(inp_str, lvl):
       raise ValueError(f'Not all component fractions at level {lvl} have the same sign!')
     if not isclose(abs(sum(fracs)), 1.):
       frac_type = 'Atom' if sum(fracs) > 0 else 'Weight'
-      print(f'Note: {frac_type} fractions for component {inp_str} at depth level {lvl} do not sum to unity. Sum: {abs(sum(fracs)):g}')
-    return mix_materials([process_input(comp.rsplit(':', maxsplit=1)[0], lvl) for comp in comps], [abs(f) for f in fracs], 'atom' if all([f > 0 for f in fracs]) else 'weight')
+      if not quiet:
+        print(f'Note: {frac_type} fractions for component {inp_str} at depth level {lvl} do not sum to unity. Sum: {abs(sum(fracs)):g}')
+    return mix_materials([process_input(comp.rsplit(':', maxsplit=1)[0], lvl, quiet=quiet) for comp in comps], [abs(f) for f in fracs], 'atom' if all([f > 0 for f in fracs]) else 'weight')
   else:
     lvl -= 1
     if ':' in comps[0]:
