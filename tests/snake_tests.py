@@ -53,12 +53,15 @@ class TestSnake(unittest.TestCase):
 
     :param test_answers: dict containing files as keys and contents as answers
     """
-    for fyle in test_answers.keys():
+    for fyle, expected_content in test_answers.items():
       self.assertTrue(exists(pjoin(getcwd(), fyle)))
       with open(fyle, 'r') as f:
         lines = f.readlines()
-        self.assertEqual(len(lines), 1)
-        self.assertEqual(test_answers[fyle], lines[0].strip())
+        if not isinstance(expected_content, list):
+          raise TypeError("Expected content must be a list")
+        self.assertEqual(len(expected_content), len(lines))
+        for i, expected_line in enumerate(expected_content):
+          self.assertEqual(expected_line.strip(), lines[i].strip())
 
   def test_basic_1(self):
     args = InputArgs(
@@ -68,10 +71,10 @@ class TestSnake(unittest.TestCase):
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-1_0_0' : '1 a const tsnoc',
-      'test-1_0_1' : '1 b const tsnoc',
-      'test-1_1_0' : '2 a const tsnoc',
-      'test-1_1_1' : '2 b const tsnoc'
+      'test-1_0_0' : ['1 a const tsnoc'],
+      'test-1_0_1' : ['1 b const tsnoc'],
+      'test-1_1_0' : ['2 a const tsnoc'],
+      'test-1_1_1' : ['2 b const tsnoc']
     })
 
   def test_basic_2(self):
@@ -100,8 +103,8 @@ class TestSnake(unittest.TestCase):
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-3_0' : '1 -1 -1',
-      'test-3_1' : '2 -2 -2'
+      'test-3_0' : ['1 -1 -1'],
+      'test-3_1' : ['2 -2 -2']
     })
 
   def test_basic_4(self):
@@ -118,10 +121,10 @@ class TestSnake(unittest.TestCase):
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-4_0' : 'x = 0.250',
-      'test-4_1' : 'x = 0.500',
-      'test-4_2' : 'x = 0.750',
-      'test-4_3' : 'x = 1.000'
+      'test-4_0' : ['x = 0.250'],
+      'test-4_1' : ['x = 0.500'],
+      'test-4_2' : ['x = 0.750'],
+      'test-4_3' : ['x = 1.000']
     })
 
   def test_basic_5(self):
@@ -133,7 +136,9 @@ class TestSnake(unittest.TestCase):
     args = InputArgs(pjoin(input_dir, 'test-5.snake'))
     snake(args, quiet=True)
 
-    self.checkAnswers({'test-5_0' : '10 20 30'})
+    self.checkAnswers({
+      'test-5_0' : ['10 20 30']
+    })
 
   def test_basic_6(self):
     """
@@ -148,9 +153,9 @@ class TestSnake(unittest.TestCase):
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-6_0' : '(1, 14, 6)',
-      'test-6_1' : '(2, 14, 6)',
-      'test-6_2' : '(3, 14, 6)',
+      'test-6_0' : ['(1, 14, 6)'],
+      'test-6_1' : ['(2, 14, 6)'],
+      'test-6_2' : ['(3, 14, 6)'],
     })
 
   def test_basic_7(self):
@@ -163,9 +168,9 @@ class TestSnake(unittest.TestCase):
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-7_0' : 'the value of x is: 1, this is a string containing x: 1',
-      'test-7_1' : 'the value of x is: 2, this is a string containing x: 2',
-      'test-7_2' : 'the value of x is: 3, this is a string containing x: 3',
+      'test-7_0' : ['the value of x is: 1, this is a string containing x: 1'],
+      'test-7_1' : ['the value of x is: 2, this is a string containing x: 2'],
+      'test-7_2' : ['the value of x is: 3, this is a string containing x: 3'],
     })
 
   def test_basic_8(self):
@@ -178,7 +183,7 @@ class TestSnake(unittest.TestCase):
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-8_0' : 'value = 3'
+      'test-8_0' : ['value = 3']
     })
 
   def test_basic_9(self):
@@ -191,6 +196,31 @@ class TestSnake(unittest.TestCase):
 
     with self.assertRaises(TypeError):
       snake(args, quiet=True)
+
+  def test_basic_10(self):
+    """
+    Docstring for test_basic_10
+
+    Tests manual material specification and mixing.
+    """
+    args = InputArgs(pjoin(input_dir, 'test-10.snake'))
+    snake(args, quiet=True)
+
+    self.checkAnswers({
+      'test-10_0' : [
+        'C Material 5',
+        'M5    8000  1.000000E+00 $ Oxygen'
+      ],
+      'test-10_1' : [
+        'C Material 5',
+        'M5    1000  5.000000E-01 $ Hydrogen',
+        '      8000  5.000000E-01 $ Oxygen'
+      ],
+      'test-10_2' : [
+        'C Material 5',
+        'M5    1000  1.000000E+00 $ Hydrogen'
+      ]
+    })
 
 if __name__ == '__main__':
   unittest.main()

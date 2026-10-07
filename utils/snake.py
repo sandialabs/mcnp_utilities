@@ -21,7 +21,7 @@ from random import random, randint
 from re import compile
 from collections.abc import Iterable
 # Local modules
-from mcnp_utilities.lib.materials import get_compendium_material, get_compendium_material_card, mix_materials
+from mcnp_utilities.lib.materials import get_compendium_material, get_compendium_material_card, mix_materials, Material
 from mcnp_utilities.lib.basic_tools import create_nested_path
 
 
@@ -59,7 +59,8 @@ allowable_fns = {
 material_fns = {
   'get_compendium_material'      : get_compendium_material,
   'get_compendium_material_card' : get_compendium_material_card,
-  'mix_materials'                : mix_materials
+  'mix_materials'                : mix_materials,
+  'Material'                     : Material
 }
 allowable_fns.update(material_fns)
 

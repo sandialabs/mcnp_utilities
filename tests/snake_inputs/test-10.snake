@@ -1,0 +1,4 @@
+# {@x = [0.0, 0.5, 1.0]}
+# {h = Material('atom', nuclides={'H' : 1.0})}
+# {o = Material('atom', nuclides={'O' : 1.0})}
+{mix_materials([h, o], [x, 1-x], 'atom', num=5, card=True)}
