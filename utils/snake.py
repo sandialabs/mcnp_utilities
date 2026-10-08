@@ -9,7 +9,7 @@
 
 from argparse import ArgumentParser, RawDescriptionHelpFormatter
 from copy import copy
-from numpy import where, linspace, logspace, arange, asarray
+from numpy import linspace, logspace, arange
 from math import pi, e, log, log10, sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, prod
 from itertools import product
 from importlib import import_module
@@ -20,6 +20,7 @@ from datetime import datetime
 from random import random, randint
 from re import compile
 from collections.abc import Iterable
+from keyword import iskeyword
 # Local modules
 from mcnp_utilities.lib.materials import get_compendium_material, get_compendium_material_card, mix_materials, Material
 from mcnp_utilities.lib.basic_tools import create_nested_path
@@ -210,6 +211,11 @@ c x={x} y={y:.3f} z={z:<.5f} c[1]={c[1]:^10g} b={b:>5n}""", formatter_class=RawD
   )
   return parser.parse_args()
 
+def is_valid_snake_var(name):
+  # Remove the '@' prefix if it's a key
+  clean_name = name[1:] if name.startswith('@') else name
+  return not iskeyword(clean_name)
+
 def validate_permutations(permutations):
   for key, values in permutations.items():
     if isinstance(values, str) or not isinstance(values, Iterable):
@@ -358,6 +364,9 @@ def process_line(
     if not _ASSIGNMENT_LHS_RE.match(name):
       i = close_idx + 1
       continue
+
+    if not is_valid_snake_var(name):
+      raise ValueError(f"The variable name '{name}' is a Python keyword and is not allowed.")
 
     if name.startswith('@'):
       key_name = name[1:]

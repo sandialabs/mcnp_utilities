@@ -246,5 +246,16 @@ class TestSnake(TestCase):
       ],
     })
 
+  def test_basic_12(self):
+    """
+    Docstring for test_basic_12
+
+    Tests that a keyword variable name raises a ValueError.
+    """
+    args = InputArgs(pjoin(input_dir, 'test-12.snake'))
+
+    with self.assertRaises(ValueError):
+      snake(args, quiet=True)
+
 if __name__ == '__main__':
   main()
