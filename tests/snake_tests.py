@@ -63,176 +63,181 @@ class TestSnake(TestCase):
         for i, expected_line in enumerate(expected_content):
           self.assertEqual(expected_line.strip(), lines[i].strip())
 
-  def test_basic_1(self):
+  def test_external_usage(self):
+    """
+    Docstring for test_external_usage
+
+    Tests that an external library can be used.
+    """
     args = InputArgs(
-      pjoin(input_dir, 'test-1.snake'),
-      lib=pjoin(input_dir, 'test-1-lib.py')
+      pjoin(input_dir, 'test-external-usage.snake'),
+      lib=pjoin(input_dir, 'test-external-usage-lib.py')
     )
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-1_0_0' : ['1 a const tsnoc'],
-      'test-1_0_1' : ['1 b const tsnoc'],
-      'test-1_1_0' : ['2 a const tsnoc'],
-      'test-1_1_1' : ['2 b const tsnoc']
+      'test-external-usage_0_0' : ['1 a const tsnoc'],
+      'test-external-usage_0_1' : ['1 b const tsnoc'],
+      'test-external-usage_1_0' : ['2 a const tsnoc'],
+      'test-external-usage_1_1' : ['2 b const tsnoc']
     })
 
-  def test_basic_2(self):
+  def test_resolve_error(self):
     """
-    Docstring for test_basic_2
+    Docstring for test_resolve_error
 
     Ensures an error is thrown when a variable
     cannot be resolved.
     """
-    args = InputArgs(pjoin(input_dir, 'test-2.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-resolve-error.snake'))
     with self.assertRaises(RecursionError):
       snake(args, quiet=True)
 
-  def test_basic_3(self):
+  def test_external_library(self):
     """
-    Docstring for test_basic_3
+    Docstring for test_external_library
 
     Tests that external library call works and that
     variables can be assigned to variables that are
     returned from an external function call.
     """
     args = InputArgs(
-      pjoin(input_dir, 'test-3.snake'),
-      lib=pjoin(input_dir, 'test-3-lib.py')
+      pjoin(input_dir, 'test-external-library.snake'),
+      lib=pjoin(input_dir, 'test-external-library-lib.py')
     )
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-3_0' : ['1 -1 -1'],
-      'test-3_1' : ['2 -2 -2']
+      'test-external-library_0' : ['1 -1 -1'],
+      'test-external-library_1' : ['2 -2 -2']
     })
 
-  def test_basic_4(self):
+  def test_comment_character(self):
     """
-    Docstring for test_basic_4
+    Docstring for test_comment_character
 
     Tests different comment character from default
     and f-string printing.
     """
     args = InputArgs(
-      pjoin(input_dir, 'test-4.snake'),
+      pjoin(input_dir, 'test-comment-character.snake'),
       cchar='!'
     )
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-4_0' : ['x = 0.250'],
-      'test-4_1' : ['x = 0.500'],
-      'test-4_2' : ['x = 0.750'],
-      'test-4_3' : ['x = 1.000']
+      'test-comment-character_0' : ['x = 0.250'],
+      'test-comment-character_1' : ['x = 0.500'],
+      'test-comment-character_2' : ['x = 0.750'],
+      'test-comment-character_3' : ['x = 1.000']
     })
 
-  def test_basic_5(self):
+  def test_multi_assignment(self):
     """
-    Docstring for test_basic_5
+    Docstring for test_multi_assignment
 
     Tests multi-variable assignment.
     """
-    args = InputArgs(pjoin(input_dir, 'test-5.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-multi-assignment.snake'))
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-5_0' : ['10 20 30']
+      'test-multi-assignment_0' : ['10 20 30']
     })
 
-  def test_basic_6(self):
+  def test_external_library_keywords(self):
     """
-    Docstring for test_basic_6
+    Docstring for test_external_library_keywords
 
     Tests that keyword arguments in external library functions are handled correctly.
     """
     args = InputArgs(
-      pjoin(input_dir, 'test-6.snake'),
-      lib=pjoin(input_dir, 'test-6-lib.py')
+      pjoin(input_dir, 'test-external-library-keywords.snake'),
+      lib=pjoin(input_dir, 'test-external-library-keywords-lib.py')
     )
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-6_0' : ['(1, 14, 6)'],
-      'test-6_1' : ['(2, 14, 6)'],
-      'test-6_2' : ['(3, 14, 6)'],
+      'test-external-library-keywords_0' : ['(1, 14, 6)'],
+      'test-external-library-keywords_1' : ['(2, 14, 6)'],
+      'test-external-library-keywords_2' : ['(3, 14, 6)'],
     })
 
-  def test_basic_7(self):
+  def test_f_strings(self):
     """
-    Docstring for test_basic_7
+    Docstring for test_f_strings
 
     Tests that f-strings with nested braces are handled correctly.
     """
-    args = InputArgs(pjoin(input_dir, 'test-7.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-f-strings.snake'))
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-7_0' : ['the value of x is: 1, this is a string containing x: 1'],
-      'test-7_1' : ['the value of x is: 2, this is a string containing x: 2'],
-      'test-7_2' : ['the value of x is: 3, this is a string containing x: 3'],
+      'test-f-strings_0' : ['the value of x is: 1, this is a string containing x: 1'],
+      'test-f-strings_1' : ['the value of x is: 2, this is a string containing x: 2'],
+      'test-f-strings_2' : ['the value of x is: 3, this is a string containing x: 3'],
     })
 
-  def test_basic_8(self):
+  def test_multi_pass(self):
     """
-    Docstring for test_basic_8
+    Docstring for test_multi_pass
 
     Tests constants that are correctly evaluated on a second pass.
     """
-    args = InputArgs(pjoin(input_dir, 'test-8.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-multi-pass.snake'))
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-8_0' : ['value = 3']
+      'test-multi-pass_0' : ['value = 3']
     })
 
-  def test_basic_9(self):
+  def test_noniterable_key(self):
     """
-    Docstring for test_basic_9
+    Docstring for test_noniterable_key
 
     Tests that non-iterable key values raise a TypeError.
     """
-    args = InputArgs(pjoin(input_dir, 'test-9.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-noniterable-key.snake'))
 
     with self.assertRaises(TypeError):
       snake(args, quiet=True)
 
-  def test_basic_10(self):
+  def test_material_mixing(self):
     """
-    Docstring for test_basic_10
+    Docstring for test_material_mixing
 
     Tests manual material specification and mixing.
     """
-    args = InputArgs(pjoin(input_dir, 'test-10.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-material-mixing.snake'))
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-10_0' : [
+      'test-material-mixing_0' : [
         'C Material 5',
         'M5    8000  1.000000E+00 $ Oxygen'
       ],
-      'test-10_1' : [
+      'test-material-mixing_1' : [
         'C Material 5',
         'M5    1000  5.000000E-01 $ Hydrogen',
         '      8000  5.000000E-01 $ Oxygen'
       ],
-      'test-10_2' : [
+      'test-material-mixing_2' : [
         'C Material 5',
         'M5    1000  1.000000E+00 $ Hydrogen'
       ]
     })
 
-  def test_basic_11(self):
+  def test_compendium_mixing(self):
     """
-    Docstring for test_basic_11
+    Docstring for test_compendium_mixing
 
     Tests material generation from PNNL compendium and mixing.
     """
-    args = InputArgs(pjoin(input_dir, 'test-11.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-compendium-mixing.snake'))
     snake(args, quiet=True)
 
     self.checkAnswers({
-      'test-11_0' : [
+      'test-compendium-mixing_0' : [
         'C Material 1',
         'M1    1001  -5.593641E-02 $ Hydrogen-1',
         '      1002  -1.285697E-05 $ Hydrogen-2',
@@ -246,13 +251,13 @@ class TestSnake(TestCase):
       ],
     })
 
-  def test_basic_12(self):
+  def test_keyword_variable(self):
     """
-    Docstring for test_basic_12
+    Docstring for test_keyword_variable
 
     Tests that a keyword variable name raises a ValueError.
     """
-    args = InputArgs(pjoin(input_dir, 'test-12.snake'))
+    args = InputArgs(pjoin(input_dir, 'test-keyword-variable.snake'))
 
     with self.assertRaises(ValueError):
       snake(args, quiet=True)
